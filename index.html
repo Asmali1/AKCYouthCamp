@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>All Kids Count Youth Camp (AKCYC)</title>
-  <meta name="description" content="AKCYC—where children explore nature, think independently, and learn to preserve our environment. Register now for a transformative camp experience!" />
+  <meta
+    name="description"
+    content="AKCYC—where children explore nature, think independently, and learn to preserve our environment. Register now for a transformative camp experience!"
+  />
   <link rel="icon" href="favicon.ico" />
 
   <!-- Google Fonts -->
@@ -28,18 +31,48 @@
   />
 
   <style>
+    /*------------------------------------------------------------
+      STEP 1: COPY EXACT HUES FROM THE LOGO INTO CSS VARIABLES
+      The “All Kids Count” logo uses bright, saturated colors:
+      - Orange (letter “A”):      #FF6A00
+      - Green (letter “L” & “D”): #28A745
+      - Purple (letter “K”):      #8E44AD
+      - Red (letter “S”):         #E74C3C
+      - Blue (letter “T”):        #3498DB
+      - Yellow (sun behind text): #F1C40F
+      - (Plus black/white for text outlines and silhouettes.)
+
+      We’ll assign those as CSS variables and then re-use them on buttons,
+      headings, backgrounds, icons, etc., so that the entire site “feels” like
+      the logo.
+    ------------------------------------------------------------*/
     :root {
-      --color-primary: #1a3d5f;
-      --color-secondary: #ff7f50;
-      --color-accent: #ffe066;
-      --color-bg-light: #f0f4f8;
-      --color-bg-dark: #ffffff;
-      --transition-speed: 0.35s;
+      --color-orange: #FF6A00;
+      --color-green:  #28A745;
+      --color-purple: #8E44AD;
+      --color-red:    #E74C3C;
+      --color-blue:   #3498DB;
+      --color-yellow: #F1C40F;
+
+      --color-black:  #000000;
+      --color-white:  #FFFFFF;
+
+      /* Neutrals: */
+      --color-gray-light: #F7F9FA;
+      --color-gray-mid:   #E1E8ED;
+      --color-gray-dark:  #333333;
+
+      /* Typography: */
       --font-heading: "Poppins", sans-serif;
-      --font-body: "Source Sans Pro", sans-serif;
+      --font-body:    "Source Sans Pro", sans-serif;
+
+      /* Global transition timing: */
+      --transition-speed: 0.3s;
     }
 
-    /* Global Reset */
+    /*------------------------------------------------------------
+      STEP 2: GLOBAL RESET + BASE STYLES
+    ------------------------------------------------------------*/
     *,
     *::before,
     *::after {
@@ -47,208 +80,201 @@
       margin: 0;
       padding: 0;
     }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
       font-family: var(--font-body);
-      line-height: 1.65;
-      background-color: var(--color-bg-light);
-      color: #333;
-      padding-top: 56px; /* space for fixed nav (default Bootstrap navbar height) */
+      line-height: 1.6;
+      background-color: var(--color-gray-light);
+      color: var(--color-gray-dark);
+      padding-top: 56px; /* leave space for a fixed navbar */
     }
+
     a {
-      color: var(--color-primary);
       text-decoration: none;
       transition: color var(--transition-speed);
     }
+
     a:hover {
-      color: var(--color-secondary);
+      text-decoration: none;
+      opacity: 0.8;
     }
+
     h1, h2, h3, h4, h5 {
       font-family: var(--font-heading);
-      color: var(--color-primary);
+      color: var(--color-gray-dark);
       margin-bottom: 1rem;
     }
+
     p {
       margin-bottom: 1rem;
+      color: var(--color-gray-dark);
     }
+
     .btn-rounded {
       border-radius: 50px;
+      transition: transform var(--transition-speed),
+                  box-shadow var(--transition-speed);
     }
 
-    /* Utility Classes */
-    .text-accent {
-      color: var(--color-secondary) !important;
-    }
-    .bg-accent {
-      background-color: var(--color-secondary) !important;
-      color: #fff;
-    }
-    .shadow-lg-custom {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    .gradient-btn {
-      background: linear-gradient(45deg, var(--color-secondary), var(--color-accent));
-      color: #fff;
-      border: none;
-      transition: background var(--transition-speed);
-    }
-    .gradient-btn:hover {
-      background: linear-gradient(45deg, var(--color-accent), var(--color-secondary));
-    }
-    .section-divider {
-      position: relative;
-      height: 80px;
-      overflow: hidden;
-      transform: translateY(-1px);
-    }
-    .section-divider svg {
-      display: block;
-      width: 100%;
-      height: 80px;
+    .btn-rounded:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
-    /* Navbar */
+    /*------------------------------------------------------------
+      STEP 3: NAVBAR STYLING
+      We give the navbar a semi-transparent white background initially,
+      then switch to a deep “logo black” + colored accent on scroll.
+    ------------------------------------------------------------*/
     .navbar {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: saturate(200%) blur(20px);
-      transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+      transition: background-color var(--transition-speed),
+                  box-shadow var(--transition-speed);
       z-index: 1000;
-      /* height removed so navbar can expand */
     }
+
     .navbar.scrolled {
-      background-color: var(--color-primary);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      background-color: var(--color-black);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
+
     .navbar .navbar-brand {
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-gray-dark);
       transition: color var(--transition-speed);
     }
     .navbar.scrolled .navbar-brand {
-      color: #fff;
+      color: var(--color-yellow);
     }
+
     .navbar .nav-link {
       font-weight: 500;
-      color: var(--color-primary);
-      transition: color var(--transition-speed);
+      color: var(--color-gray-dark);
       margin: 0 0.7rem;
+      transition: color var(--transition-speed);
     }
     .navbar.scrolled .nav-link {
-      color: #f8f9fa;
+      color: var(--color-gray-light);
     }
     .navbar .nav-link:hover {
-      color: var(--color-secondary) !important;
+      color: var(--color-yellow) !important;
     }
+
     .navbar .navbar-toggler {
       border: none;
     }
     .navbar .navbar-toggler-icon {
-      color: var(--color-primary);
       font-size: 1.2rem;
+      color: var(--color-gray-dark);
+      transition: color var(--transition-speed);
     }
     .navbar.scrolled .navbar-toggler-icon {
-      filter: invert(1);
+      color: var(--color-gray-light);
     }
 
-    /* Hero Section */
+    /*------------------------------------------------------------
+      STEP 4: HERO SECTION
+      Use a subtle nature background + big, multi-colored heading.
+      We’ll overlay a semi‐transparent black layer so text is legible
+      and then color each word of the heading in one of the logo colors.
+    ------------------------------------------------------------*/
     .hero {
       position: relative;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://via.placeholder.com/1920x800") no-repeat center/cover;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("https://via.placeholder.com/1920x900?text=Forest+Camp+Background")
+          no-repeat center/cover;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #fff;
+      color: var(--color-white);
     }
-    .hero .hero-content {
+
+    .hero .hero‐content {
       position: relative;
       z-index: 2;
       max-width: 900px;
       padding: 0 1rem;
-      animation: fadeInDown 1s ease-out both;
+      animation: fadeInDown 1s ease‐out both;
     }
+
     .hero h1 {
       font-size: 3.8rem;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.2;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      margin-bottom: 1.2rem;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.5rem;
     }
+
+    /* We apply a different color to each word in the heading: */
+    .hero h1 .word‐orange { color: var(--color-orange); }
+    .hero h1 .word‐green  { color: var(--color-green);  }
+    .hero h1 .word‐purple { color: var(--color-purple); }
+    .hero h1 .word‐red    { color: var(--color-red);    }
+    .hero h1 .word‐blue   { color: var(--color-blue);   }
+
     .hero p.lead {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 2rem;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
     }
-    .hero .btn-primary {
-      background-color: var(--color-secondary);
+
+    .hero .btn‐join {
+      background: var(--color-yellow);
+      color: var(--color-black);
       border: none;
       padding: 0.85rem 2.5rem;
       font-size: 1.15rem;
       border-radius: 50px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      transition: background var(--transition-speed),
+                  transform var(--transition-speed);
     }
-    .hero .btn-primary:hover {
-      background-color: #e66e3f;
+    .hero .btn‐join:hover {
+      background: #E0B40A; /* slightly darker yellow */
       transform: translateY(-3px);
     }
 
-    /* Floating Shapes */
+    /* Small floating circles as background “bubbles” */
     .hero .shape {
       position: absolute;
       border-radius: 50%;
       opacity: 0.15;
       animation: float 8s ease-in-out infinite;
+      z-index: 1;
     }
-    .hero .shape.small { width: 150px; height: 150px; background: var(--color-accent); top: 10%; left: 5%; }
-    .hero .shape.medium { width: 200px; height: 200px; background: var(--color-secondary); bottom: 15%; right: 10%; animation-duration: 10s; }
-    @keyframes float {
-      0% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-20px) translateX(10px); }
-      100% { transform: translateY(0) translateX(0); }
+    .hero .shape.small {
+      width: 120px;
+      height: 120px;
+      background: var(--color-green);
+      top: 10%;
+      left: 5%;
     }
-
-    /* Wave Divider (top) */
-    .wave-divider-top {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-      transform: rotate(180deg);
+    .hero .shape.medium {
+      width: 180px;
+      height: 180px;
+      background: var(--color-orange);
+      bottom: 15%;
+      right: 10%;
+      animation-duration: 10s;
     }
-    .wave-divider-top svg {
-      position: relative;
-      display: block;
-      width: calc(150% + 1.3px);
-      height: 100px;
-    }
-    .wave-divider-top .shape-fill {
-      fill: var(--color-bg-light);
-    }
-
-    /* Section Titles */
-    h2.section-title {
-      font-size: 2.5rem;
-      position: relative;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    h2.section-title::after {
-      content: "";
-      width: 100px;
-      height: 5px;
-      background-color: var(--color-secondary);
-      display: block;
-      margin: 8px auto 0;
-      border-radius: 2px;
+    .hero .shape.large {
+      width: 200px;
+      height: 200px;
+      background: var(--color-purple);
+      top: 30%;
+      right: 20%;
+      animation-duration: 12s;
     }
 
-    /* Fade-in animation */
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -259,39 +285,88 @@
         transform: translateY(0);
       }
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+
+    @keyframes float {
+      0%   { transform: translateY(0) translateX(0);   }
+      50%  { transform: translateY(-20px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0);   }
     }
 
-    /* About Section */
+    /*------------------------------------------------------------
+      STEP 5: WAVE DIVIDER
+      Use a bright yellow wave so it looks like the sun bleeding into
+      the next section.
+    ------------------------------------------------------------*/
+    .wave-divider-top {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+      margin-bottom: -1px;
+    }
+    .wave-divider-top svg {
+      position: relative;
+      display: block;
+      width: calc(150% + 1.3px);
+      height: 100px;
+    }
+    .wave-divider-top .shape-fill {
+      fill: var(--color-yellow);
+    }
+
+    /*------------------------------------------------------------
+      STEP 6: ABOUT SECTION
+    ------------------------------------------------------------*/
     #about {
-      background-color: var(--color-bg-light);
+      background-color: var(--color-yellow);
       padding: 6rem 1rem;
+    }
+    #about h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--color-black);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    #about h2::after {
+      content: "";
+      width: 80px;
+      height: 5px;
+      background-color: var(--color-red);
+      display: block;
+      margin: 8px auto 0;
+      border-radius: 2px;
     }
     #about p {
       font-size: 1.1rem;
-      color: #555;
+      color: var(--color-gray-dark);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    /* Features/Banner Section */
+    /*------------------------------------------------------------
+      STEP 7: FEATURES SECTION
+      We’ll overlay a semi‐dark layer on a nature‐backdrop and use
+      large accent buttons in “logo blue.”
+    ------------------------------------------------------------*/
     #features {
-      background: url("https://via.placeholder.com/1920x600/ffffff/cccccc?text=Nature+Backdrop") no-repeat center/cover;
       position: relative;
-      color: #fff;
+      background:
+        url("https://via.placeholder.com/1920x700?text=Kids+by+the+Lake")
+          no-repeat center/cover;
+      background-size: cover;
       padding: 6rem 1rem;
       text-align: center;
+      color: var(--color-white);
     }
     #features::before {
       content: "";
       position: absolute;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.5);
     }
     #features .features-content {
       position: relative;
@@ -302,36 +377,50 @@
     #features h2 {
       font-size: 2.8rem;
       margin-bottom: 1rem;
+      color: var(--color-yellow);
     }
     #features p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
+      color: var(--color-gray-light);
     }
     #features .btn-light {
-      background-color: #fff;
-      color: var(--color-primary);
+      background-color: var(--color-blue);
+      color: var(--color-white);
       border: none;
       padding: 0.75rem 2rem;
       font-size: 1rem;
       border-radius: 50px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: background-color var(--transition-speed),
+                  transform var(--transition-speed);
     }
     #features .btn-light:hover {
-      background-color: #f0f0f0;
+      background-color: #2B7EC0; /* slight darker blue */
       transform: translateY(-2px);
     }
 
-    /* Activities Section */
+    /*------------------------------------------------------------
+      STEP 8: ACTIVITIES SECTION
+      A clean white background; each activity “card” uses a colored icon
+      from the logo’s palette.
+    ------------------------------------------------------------*/
     #activities {
-      background-color: #fff;
+      background-color: var(--color-white);
       padding: 6rem 1rem;
+    }
+    #activities h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--color-gray-dark);
     }
     .activity-card {
       border: none;
-      background-color: #fdfdfd;
+      background-color: var(--color-gray-light);
       border-radius: 15px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      transition: transform var(--transition-speed),
+                  box-shadow var(--transition-speed);
       overflow: hidden;
     }
     .activity-card:hover {
@@ -341,55 +430,114 @@
     .activity-icon {
       font-size: 3.5rem;
       margin-bottom: 1rem;
-      color: var(--color-secondary);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
     }
+    /* Color each activity icon with a different logo hue: */
+    .icon-orange  { background: var(--color-orange);  color: var(--color-white); }
+    .icon-green   { background: var(--color-green);   color: var(--color-white); }
+    .icon-purple  { background: var(--color-purple);  color: var(--color-white); }
+    .icon-red     { background: var(--color-red);     color: var(--color-white); }
+    .icon-blue    { background: var(--color-blue);    color: var(--color-white); }
+
     .activity-card .card-body {
       padding: 2.5rem;
+      text-align: center;
     }
     .activity-card h5 {
       margin-bottom: 0.75rem;
       font-size: 1.3rem;
-      color: var(--color-primary);
+      color: var(--color-gray-dark);
     }
     .activity-card p {
-      color: #666;
+      color: var(--color-gray-dark);
       font-size: 0.975rem;
     }
 
-    /* Testimonials Section */
+    /*------------------------------------------------------------
+      STEP 9: WAVE DIVIDER (BOTTOM)
+    ------------------------------------------------------------*/
+    .wave-divider-bottom {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin-top: -1px;
+    }
+    .wave-divider-bottom svg {
+      display: block;
+      width: calc(150% + 1.3px);
+      height: 100px;
+    }
+    .wave-divider-bottom .shape-fill {
+      fill: var(--color-white);
+    }
+
+    /*------------------------------------------------------------
+      STEP 10: TESTIMONIALS SECTION
+      Keep a light gray background and use “logo yellow” on the section title.
+    ------------------------------------------------------------*/
     #testimonials {
-      background-color: var(--color-bg-light);
+      background-color: var(--color-gray-light);
       padding: 6rem 1rem;
       position: relative;
     }
-    #testimonials .testimonial-card {
-      background-color: #fff;
-      border-radius: 12px;
+    #testimonials h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--color-yellow);
+    }
+    .testimonial-card {
+      background-color: var(--color-white);
+      border-radius: 15px;
       padding: 2rem;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-      transition: transform var(--transition-speed);
+      transition: transform var(--transition-speed),
+                  box-shadow var(--transition-speed);
+      max-width: 700px;
+      margin: 0 auto;
     }
-    #testimonials .testimonial-card:hover {
+    .testimonial-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    #testimonials .testimonial-text {
+    .testimonial-text {
       font-style: italic;
-      color: #555;
+      color: var(--color-gray-dark);
       margin-bottom: 1.2rem;
     }
-    #testimonials .testimonial-author {
-      font-weight: 600;
-      color: var(--color-primary);
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--color-gray-dark);
+      text-align: right;
     }
-    #testimonials .carousel-indicators [data-bs-target] {
-      background-color: var(--color-secondary);
+    .carousel-indicators button {
+      background-color: var(--color-yellow);
+      border: none;
+    }
+    .carousel-indicators .active {
+      background-color: var(--color-yellow);
+      opacity: 1;
     }
 
-    /* Registration Section */
+    /*------------------------------------------------------------
+      STEP 11: REGISTRATION SECTION
+      Light background; use multi-colored prefixes on labels.
+    ------------------------------------------------------------*/
     #register {
-      background-color: var(--color-bg-light);
+      background-color: var(--color-white);
       padding: 6rem 1rem;
+    }
+    #register h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--color-gray-dark);
     }
     #register .card {
       border: none;
@@ -401,109 +549,137 @@
     }
     #register label {
       font-weight: 600;
-      color: var(--color-primary);
+      color: var(--color-gray-dark);
     }
     #register .form-control,
     #register .form-select,
     #register textarea {
       border-radius: 8px;
-      transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
-      border: 1px solid #ccc;
+      transition: border-color var(--transition-speed),
+                  box-shadow var(--transition-speed);
+      border: 1px solid var(--color-gray-mid);
     }
     #register .form-control:focus,
     #register .form-select:focus,
     #register textarea:focus {
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
+      border-color: var(--color-blue);
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
     }
     #register .btn-primary {
-      background-color: var(--color-secondary);
+      background-color: var(--color-blue);
       border: none;
       padding: 0.85rem 2.5rem;
       font-size: 1.05rem;
       border-radius: 50px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      transition: background-color var(--transition-speed),
+                  transform var(--transition-speed);
     }
     #register .btn-primary:hover {
-      background-color: #e66e3f;
+      background-color: #2B7EC0;
       transform: translateY(-3px);
     }
 
-    /* Contact Section */
+    /*------------------------------------------------------------
+      STEP 12: CONTACT SECTION
+    ------------------------------------------------------------*/
     #contact {
-      background-color: #fff;
+      background-color: var(--color-gray-light);
       padding: 6rem 1rem;
     }
-    #contact .contact-info h5,
-    #contact .contact-info p {
-      color: var(--color-primary);
+    #contact h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--color-gray-dark);
     }
+    #contact .contact-info h5 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-gray-dark);
+    }
+    #contact .contact-info p,
     #contact .contact-info a {
-      color: var(--color-secondary);
-      transition: color var(--transition-speed);
+      color: var(--color-gray-dark);
+      margin-bottom: 0.5rem;
+    }
+    #contact .contact-info i {
+      color: var(--color-blue);
+      margin-right: 0.5rem;
     }
     #contact .contact-info a:hover {
-      color: #e66e3f;
+      color: var(--color-blue);
+      text-decoration: underline;
     }
     #contact .form-control:focus {
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
+      border-color: var(--color-purple);
+      box-shadow: 0 0 8px rgba(142, 68, 173, 0.3);
     }
-    #contact .btn-primary {
-      background-color: var(--color-secondary);
+    #contact .btn‐submit {
+      background-color: var(--color-green);
       border: none;
       padding: 0.7rem 2rem;
       border-radius: 50px;
-      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      color: var(--color-white);
+      transition: background-color var(--transition-speed),
+                  transform var(--transition-speed);
     }
-    #contact .btn-primary:hover {
-      background-color: #e66e3f;
+    #contact .btn‐submit:hover {
+      background-color: #238C3F; /* slightly darker green */
       transform: translateY(-2px);
     }
 
-    /* Footer */
+    /*------------------------------------------------------------
+      STEP 13: FOOTER
+      Dark background in “logo black” + text in yellow and white.
+    ------------------------------------------------------------*/
     footer {
-      background-color: var(--color-primary);
-      color: #fff;
+      background-color: var(--color-black);
+      color: var(--color-gray-light);
       padding: 3rem 1rem;
       text-align: center;
       font-size: 0.95rem;
       position: relative;
       overflow: hidden;
     }
+    footer p {
+      margin-bottom: 0.5rem;
+    }
     footer a {
-      color: var(--color-accent);
+      color: var(--color-yellow);
       margin: 0 0.5rem;
       transition: transform var(--transition-speed);
     }
     footer a:hover {
       transform: scale(1.1);
-      color: #ffd700;
+      color: var(--color-green);
     }
-    footer .social-icons a {
-      color: #fff;
+    .social-icons a {
+      color: var(--color-white);
       margin: 0 0.5rem;
       font-size: 1.4rem;
-      transition: color var(--transition-speed), transform var(--transition-speed);
+      transition: color var(--transition-speed),
+                  transform var(--transition-speed);
     }
-    footer .social-icons a:hover {
-      color: var(--color-accent);
+    .social-icons a:hover {
+      color: var(--color-yellow);
       transform: scale(1.2);
     }
-    footer .footer-note {
+    .footer‐note {
       margin-top: 1rem;
       font-size: 0.85rem;
-      color: #eee;
+      color: var(--color-gray-mid);
     }
 
-    /* Back to Top Button */
+    /*------------------------------------------------------------
+      STEP 14: BACK TO TOP BUTTON
+    ------------------------------------------------------------*/
     #backToTop {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background-color: var(--color-secondary);
-      color: #fff;
+      background-color: var(--color-red);
+      color: var(--color-white);
       border: none;
       border-radius: 50%;
       width: 3.2rem;
@@ -515,7 +691,8 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.3s ease,
+                  visibility 0.3s ease;
       z-index: 999;
     }
     #backToTop.show {
@@ -523,14 +700,28 @@
       visibility: visible;
     }
     #backToTop:hover {
-      background-color: #e66e3f;
+      background-color: #C0392B; /* darker red */
+    }
+
+    /*------------------------------------------------------------
+      STEP 15: FADE-IN ON SCROLL (used by multiple sections)
+    ------------------------------------------------------------*/
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease-out,
+                  transform 0.7s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">AKCYC</a>
       <button
@@ -542,7 +733,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarContent">
@@ -566,10 +757,18 @@
             <a class="nav-link" href="#contact">Contact</a>
           </li>
           <li class="nav-item ms-3">
-            <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" class="text-primary">
+            <a
+              href="https://www.facebook.com/YourAKCYCFacebook"
+              target="_blank"
+              class="text-gray-dark"
+            >
               <i class="bi bi-facebook fs-4"></i>
             </a>
-            <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank" class="text-primary ms-2">
+            <a
+              href="https://www.instagram.com/YourAKCYCInstagram"
+              target="_blank"
+              class="text-gray-dark ms-2"
+            >
               <i class="bi bi-instagram fs-4"></i>
             </a>
           </li>
@@ -578,53 +777,65 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-content container text-center">
-      <h1>All KIDS COUNT YOUTH CAMP</h1>
+    <div class="hero‐content container text-center">
+      <h1>
+        <span class="word‐orange">All</span>
+        <span class="word‐green">Kids</span>
+        <span class="word‐purple">Count</span>
+      </h1>
       <p class="lead">
         AKCYC envisions a world where children explore nature, think for
         themselves, and act to preserve our environment.
       </p>
-      <a href="#register" class="btn btn-primary btn-lg btn-rounded">
+      <a href="#register" class="btn btn‐join btn-lg btn-rounded">
         Join the Adventure
       </a>
     </div>
     <!-- Floating Shapes -->
     <div class="shape small"></div>
     <div class="shape medium"></div>
+    <div class="shape large"></div>
   </section>
 
-  <!-- Wave Divider Top -->
+  <!-- WAVE DIVIDER TOP -->
   <div class="wave-divider-top">
-    <svg data-name="Layer 1" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
-      <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
+    <svg
+      data-name="Layer 1"
+      xmlns="https://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+    >
+      <path
+        d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z"
+        class="shape-fill"
+      ></path>
     </svg>
   </div>
 
-  <!-- About Section -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title fade-in">About All Kids Count Youth Camp</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <p class="fade-in" style="transition-delay: 0.2s;">
-            All Kids Count Youth Camp envisions a world in which children grow up exploring and connecting
-            with nature, thinking for themselves and acting to preserve our environment.
-          </p>
-        </div>
-      </div>
+      <h2 class="fade-in">About All Kids Count Youth Camp</h2>
+      <p class="fade-in" style="transition-delay: 0.2s;">
+        All Kids Count Youth Camp envisions a world in which children grow up
+        exploring and connecting with nature, thinking for themselves, and
+        acting to preserve our environment. Our mission is to foster
+        confidence, creativity, and environmental stewardship through
+        hands-on experiences in the great outdoors.
+      </p>
     </div>
   </section>
 
-  <!-- Features/Banner Section -->
+  <!-- FEATURES / WHY AKCYC SECTION -->
   <section id="features">
-    <div class="features-content container">
+    <div class="features-content container fade-in">
       <h2>Why Choose AKCYC?</h2>
       <p>
-        We go beyond ordinary camps: immersive nature experiences, personalized mentorship, and eco-friendly
-        practices. Our holistic approach ensures every camper builds confidence, resilience, and environmental
-        stewardship.
+        We go beyond ordinary camps: immersive nature experiences, personalized
+        mentorship, and eco-friendly practices. Our holistic approach ensures
+        every camper builds confidence, resilience, and environmental
+        stewardship—just like the colorful spirit of All Kids Count!
       </p>
       <a href="#register" class="btn btn-light btn-rounded">
         Learn More & Register
@@ -632,92 +843,80 @@
     </div>
   </section>
 
-  <!-- Activities Section -->
+  <!-- ACTIVITIES SECTION -->
   <section id="activities">
     <div class="container">
-      <h2 class="section-title fade-in">Camp Activities</h2>
+      <h2 class="fade-in">Camp Activities</h2>
       <div class="row g-4">
         <!-- Camping & Campfire -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 0.2s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.2s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-orange">
                 🔥
               </div>
-              <h5 class="card-title mt-3">Camping & Campfire</h5>
-              <p class="card-text">
-                Pitch tents, cook over a campfire, share stories under the stars.
-              </p>
+              <h5>Camping & Campfire</h5>
+              <p>Pitch tents, cook over a campfire, share stories under the stars.</p>
             </div>
           </div>
         </div>
         <!-- Hiking & Nature Walks -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 0.4s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.4s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-green">
                 🥾
               </div>
-              <h5 class="card-title mt-3">Hiking & Nature Walks</h5>
-              <p class="card-text">
-                Guided forest treks, flora & fauna identification, wilderness survival tips.
-              </p>
+              <h5>Hiking & Nature Walks</h5>
+              <p>Guided forest treks, flora & fauna identification, wilderness survival tips.</p>
             </div>
           </div>
         </div>
         <!-- Kayaking & Water Play -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 0.6s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.6s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-blue">
                 🛶
               </div>
-              <h5 class="card-title mt-3">Kayaking & Water Play</h5>
-              <p class="card-text">
-                Safe paddle training, river exploration, team water games.
-              </p>
+              <h5>Kayaking & Water Play</h5>
+              <p>Safe paddle training, river exploration, team water games.</p>
             </div>
           </div>
         </div>
         <!-- Arts & Crafts -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 0.8s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.8s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-purple">
                 🎨
               </div>
-              <h5 class="card-title mt-3">Arts & Crafts</h5>
-              <p class="card-text">
-                Nature-inspired painting, recycled-material creations, friendship bracelet making.
-              </p>
+              <h5>Arts & Crafts</h5>
+              <p>Nature-inspired painting, recycled-material creations, friendship bracelet making.</p>
             </div>
           </div>
         </div>
         <!-- Team Sports & Games -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 1s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-red">
                 ⚽
               </div>
-              <h5 class="card-title mt-3">Team Sports & Games</h5>
-              <p class="card-text">
-                Soccer tournaments, relay races, scavenger hunts, cooperative games.
-              </p>
+              <h5>Team Sports & Games</h5>
+              <p>Soccer tournaments, relay races, scavenger hunts, cooperative games.</p>
             </div>
           </div>
         </div>
         <!-- High Ropes & Climbing -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="card activity-card fade-in" style="transition-delay: 1.2s;">
+        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.2s;">
+          <div class="card activity-card">
             <div class="card-body text-center">
-              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+              <div class="activity-icon icon-green">
                 🧗‍♂️
               </div>
-              <h5 class="card-title mt-3">High Ropes & Climbing</h5>
-              <p class="card-text">
-                Supervised confidence-building challenges on our ropes course.
-              </p>
+              <h5>High Ropes & Climbing</h5>
+              <p>Supervised confidence-building challenges on our ropes course.</p>
             </div>
           </div>
         </div>
@@ -725,67 +924,96 @@
     </div>
   </section>
 
-  <!-- Wave Divider Bottom -->
-  <div class="wave-divider-top" style="transform: rotate(0deg);">
-    <svg data-name="Layer 1" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
-      <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
+  <!-- WAVE DIVIDER BOTTOM -->
+  <div class="wave-divider-bottom">
+    <svg
+      data-name="Layer 1"
+      xmlns="https://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+    >
+      <path
+        d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z"
+        class="shape-fill"
+      ></path>
     </svg>
   </div>
 
-  <!-- Testimonials Section -->
+  <!-- TESTIMONIALS SECTION -->
   <section id="testimonials">
     <div class="container">
-      <h2 class="section-title fade-in">Testimonials</h2>
-      <div id="testimonialCarousel" class="carousel slide fade-in" data-bs-ride="carousel" style="transition-delay: 0.2s;">
+      <h2 class="fade-in">Testimonials</h2>
+      <div
+        id="testimonialCarousel"
+        class="carousel slide fade-in"
+        data-bs-ride="carousel"
+        style="transition-delay: 0.2s;"
+      >
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="testimonial-card mx-auto" style="max-width:600px;">
+            <div class="testimonial-card mx-auto">
               <p class="testimonial-text">
-                “AKCYC changed my child’s life! The counselors were amazing, and the variety of activities kept
-                her engaged and excited every single day. Highly recommend!”
+                “AKCYC changed my child’s life! The counselors were amazing, and
+                the variety of activities kept her engaged and excited every
+                single day. Highly recommend!”
               </p>
               <p class="testimonial-author">— Sarah M., Parent</p>
             </div>
           </div>
           <div class="carousel-item">
-            <div class="testimonial-card mx-auto" style="max-width:600px;">
+            <div class="testimonial-card mx-auto">
               <p class="testimonial-text">
-                “From kayaking at dawn to stargazing at night, every moment was unforgettable. My son returned
-                more confident and eager to help protect the environment.”
+                “From kayaking at dawn to stargazing at night, every moment was
+                unforgettable. My son returned more confident and eager to help
+                protect the environment.”
               </p>
               <p class="testimonial-author">— Jason L., Camper</p>
             </div>
           </div>
           <div class="carousel-item">
-            <div class="testimonial-card mx-auto" style="max-width:600px;">
+            <div class="testimonial-card mx-auto">
               <p class="testimonial-text">
-                “The focus on nature education and team-building is top-notch. We love AKCYC’s mission and
-                can’t wait to come back next summer!”
+                “The focus on nature education and team-building is top-notch.
+                We love AKCYC’s mission and can’t wait to come back next summer!”
               </p>
               <p class="testimonial-author">— Emily K., Parent</p>
             </div>
           </div>
         </div>
         <div class="carousel-indicators mt-3">
-          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
-          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
-          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
+          <button
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Testimonial 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide-to="1"
+            aria-label="Testimonial 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide-to="2"
+            aria-label="Testimonial 3"
+          ></button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Registration Section -->
+  <!-- REGISTRATION SECTION -->
   <section id="register">
     <div class="container">
-      <h2 class="section-title fade-in">Camp Registration</h2>
+      <h2 class="fade-in">Camp Registration</h2>
       <div class="row justify-content-center">
-        <div class="col-lg-7">
-          <div class="card fade-in" style="transition-delay: 0.2s;">
+        <div class="col-lg-7 fade-in" style="transition-delay: 0.2s;">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center mb-3">
-                Register for AKCYC 20XX
-              </h5>
+              <h5 class="card-title text-center mb-3">Register for AKCYC 20XX</h5>
               <p class="text-center text-muted mb-4">
                 Fill out the form below to secure your spot. Fields marked with
                 <span class="text-danger">*</span> are required.
@@ -796,14 +1024,8 @@
                   <label for="campSession" class="form-label">
                     <span class="text-danger">*</span> Select Session
                   </label>
-                  <select
-                    class="form-select"
-                    id="campSession"
-                    required
-                  >
-                    <option value="" selected disabled>
-                      Choose a session...
-                    </option>
+                  <select class="form-select" id="campSession" required>
+                    <option value="" selected disabled>Choose a session…</option>
                     <option>Session 1: June 10 – June 17</option>
                     <option>Session 2: July 1 – July 8</option>
                     <option>Session 3: August 5 – August 12</option>
@@ -840,7 +1062,7 @@
                 <div class="row g-3 mt-3">
                   <div class="col-md-6">
                     <label for="email" class="form-label">
-                      <span class="text-danger">*</span> Email Address
+                      <span class="text-danger">*</span> Email
                     </label>
                     <input
                       type="email"
@@ -866,9 +1088,7 @@
 
                 <!-- Address (optional) -->
                 <div class="mb-4 mt-4">
-                  <label for="address" class="form-label">
-                    Address (Optional)
-                  </label>
+                  <label for="address" class="form-label">Address (Optional)</label>
                   <input
                     type="text"
                     class="form-control"
@@ -920,7 +1140,7 @@
                 <div class="text-center mt-4">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-rounded gradient-btn"
+                    class="btn btn-primary btn-rounded"
                   >
                     Submit Registration
                   </button>
@@ -933,38 +1153,45 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- CONTACT SECTION -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title fade-in">Contact Us</h2>
+      <h2 class="fade-in">Contact Us</h2>
       <div class="row g-4">
         <!-- Contact Info -->
-        <div class="col-lg-5 contact-info fade-in" style="transition-delay: 0.2s;">
+        <div class="col-lg-5 contact-info fade-in" style="transition-delay:0.2s;">
           <h5>Camp Office</h5>
           <p class="mb-1">
-            <i class="bi bi-geo-alt-fill me-2 text-secondary"></i>
+            <i class="bi bi-geo-alt-fill me-2"></i>
             123 Forest Way, Somewhere, Country 12345
           </p>
           <p class="mb-1">
-            <i class="bi bi-envelope-fill me-2 text-secondary"></i>
+            <i class="bi bi-envelope-fill me-2"></i>
             <a href="mailto:info@akc yc.org">info@akc yc.org</a>
           </p>
           <p>
-            <i class="bi bi-telephone-fill me-2 text-secondary"></i>
+            <i class="bi bi-telephone-fill me-2"></i>
             (555) 987-6543
           </p>
           <div class="mt-3">
             <h6>Follow Us</h6>
-            <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" class="me-3">
+            <a
+              href="https://www.facebook.com/YourAKCYCFacebook"
+              target="_blank"
+              class="me-3"
+            >
               <i class="bi bi-facebook fs-4"></i>
             </a>
-            <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank">
+            <a
+              href="https://www.instagram.com/YourAKCYCInstagram"
+              target="_blank"
+            >
               <i class="bi bi-instagram fs-4"></i>
             </a>
           </div>
         </div>
         <!-- Contact Form -->
-        <div class="col-lg-7 fade-in" style="transition-delay: 0.4s;">
+        <div class="col-lg-7 fade-in" style="transition-delay:0.4s;">
           <form>
             <div class="row g-3">
               <div class="col-md-6">
@@ -999,10 +1226,7 @@
               ></textarea>
             </div>
             <div class="text-end">
-              <button
-                type="submit"
-                class="btn btn-primary btn-rounded gradient-btn"
-              >
+              <button type="submit" class="btn btn‐submit btn-rounded">
                 Send Message
               </button>
             </div>
@@ -1012,28 +1236,32 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p>&copy; 2025 All Kids Count Youth Camp</p>
-      <p class="mb-2">
-        “AKCYC: Inspiring kids to explore, learn, and protect our world.”
-      </p>
+      <p>“AKCYC: Inspiring kids to explore, learn, and protect our world.”</p>
       <div class="social-icons mt-3">
-        <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" aria-label="Facebook">
+        <a
+          href="https://www.facebook.com/YourAKCYCFacebook"
+          target="_blank"
+          aria-label="Facebook"
+        >
           <i class="bi bi-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/YourAKCYCInstagram"
+          target="_blank"
+          aria-label="Instagram"
+        >
           <i class="bi bi-instagram"></i>
         </a>
       </div>
-      <p class="footer-note mt-3">
-        Designed with ♥ by the AKCYC Team. All rights reserved.
-      </p>
+      <p class="footer‐note">Designed with ♥ by the AKCYC Team. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
+  <!-- BACK TO TOP BUTTON -->
   <button id="backToTop" aria-label="Back to top">
     <i class="bi bi-chevron-up"></i>
   </button>
@@ -1044,7 +1272,7 @@
   ></script>
 
   <script>
-    // Navbar: toggle .scrolled when user scrolls beyond 80px
+    // NAVBAR: toggle .scrolled once user scrolls past 80px
     const navbar = document.querySelector(".navbar");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 80) {
@@ -1054,9 +1282,12 @@
       }
     });
 
-    // Fade-in sections when they appear in viewport
+    // FADE-IN ON SCROLL
     const faders = document.querySelectorAll(".fade-in");
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -1068,7 +1299,7 @@
       appearOnScroll.observe(fader);
     });
 
-    // Back to Top button logic
+    // BACK TO TOP BUTTON
     const backToTopBtn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 400) {
