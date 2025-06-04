@@ -8,11 +8,11 @@
   <meta name="author" content="AKCYC Team" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Poppins & Source Sans Pro -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
 
@@ -30,12 +30,14 @@
 
   <style>
     :root {
-      --color-primary: #2c3e50;
-      --color-secondary: #18bc9c;
-      --color-light-bg: #f8f9fa;
-      --color-dark-bg: #ecf0f1;
-      --transition-speed: 0.3s;
-      --font-base: "Poppins", sans-serif;
+      --color-primary: #1a3d5f;
+      --color-secondary: #ff7f50;
+      --color-accent: #ffe066;
+      --color-light-bg: #f0f4f8;
+      --color-dark-bg: #ffffff;
+      --transition-speed: 0.35s;
+      --font-heading: "Poppins", sans-serif;
+      --font-body: "Source Sans Pro", sans-serif;
     }
 
     /* Global Reset */
@@ -43,41 +45,64 @@
     *::before,
     *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
-      margin: 0;
-      font-family: var(--font-base);
-      line-height: 1.6;
+      font-family: var(--font-body);
+      line-height: 1.65;
       background-color: var(--color-light-bg);
-      scroll-behavior: smooth;
       color: #333;
       padding-top: 80px; /* space for fixed nav */
     }
     a {
+      color: var(--color-primary);
       text-decoration: none;
       transition: color var(--transition-speed);
     }
     a:hover {
       color: var(--color-secondary);
     }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-      font-weight: 600;
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      margin-bottom: 1rem;
     }
     p {
-      font-weight: 300;
       margin-bottom: 1rem;
+    }
+
+    /* Utility Classes */
+    .text-accent {
+      color: var(--color-secondary) !important;
+    }
+    .bg-accent {
+      background-color: var(--color-secondary) !important;
+      color: #fff;
+    }
+    .btn-rounded {
+      border-radius: 50px;
+    }
+    .section-divider {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+      transform: translateY(-1px);
+    }
+    .section-divider svg {
+      display: block;
+      width: 100%;
+      height: 100px;
     }
 
     /* Navbar */
     .navbar {
       background-color: rgba(255, 255, 255, 0.9);
       backdrop-filter: saturate(200%) blur(20px);
-      transition: background-color var(--transition-speed),
-        box-shadow var(--transition-speed);
+      transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
       height: 80px;
     }
     .navbar.scrolled {
@@ -85,7 +110,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     .navbar .navbar-brand {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--color-primary);
       transition: color var(--transition-speed);
@@ -97,6 +122,7 @@
       font-weight: 500;
       color: var(--color-primary);
       transition: color var(--transition-speed);
+      margin: 0 0.5rem;
     }
     .navbar.scrolled .nav-link {
       color: #eee;
@@ -117,8 +143,7 @@
     /* Hero Section */
     .hero {
       position: relative;
-      background: url("https://via.placeholder.com/1920x800") no-repeat center
-        center/cover;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://via.placeholder.com/1920x800") no-repeat center/cover;
       height: 100vh;
       display: flex;
       align-items: center;
@@ -126,58 +151,68 @@
       text-align: center;
       color: #fff;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
     .hero .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      max-width: 900px;
       padding: 0 1rem;
       animation: fadeInDown 1s ease-out both;
     }
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
-      margin-bottom: 1rem;
       line-height: 1.2;
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1rem;
     }
     .hero p.lead {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       margin-bottom: 2rem;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     }
     .hero .btn-primary {
       background-color: var(--color-secondary);
       border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1.1rem;
+      padding: 0.85rem 2.5rem;
+      font-size: 1.15rem;
       border-radius: 50px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      transition: background-color var(--transition-speed),
-        transform var(--transition-speed);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
     }
     .hero .btn-primary:hover {
-      background-color: #149a7d;
-      transform: translateY(-2px);
+      background-color: #e66e3f;
+      transform: translateY(-3px);
+    }
+
+    /* Wave Divider */
+    .wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(150% + 1.3px);
+      height: 120px;
+    }
+    .wave-divider .shape-fill {
+      fill: var(--color-light-bg);
     }
 
     /* Section Titles */
     h2.section-title {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
       position: relative;
-      color: var(--color-primary);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
     h2.section-title::after {
       content: "";
-      width: 80px;
-      height: 4px;
+      width: 100px;
+      height: 5px;
       background-color: var(--color-secondary);
       display: block;
       margin: 8px auto 0;
@@ -188,7 +223,7 @@
     @keyframes fadeInDown {
       0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
       }
       100% {
         opacity: 1;
@@ -198,7 +233,7 @@
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     }
     .fade-in.visible {
       opacity: 1;
@@ -207,84 +242,96 @@
 
     /* About Section */
     #about {
-      background-color: #fff;
-      padding: 5rem 1rem;
+      background-color: var(--color-light-bg);
+      padding: 6rem 1rem;
     }
     #about p {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      color: #555;
     }
 
     /* Activities Section */
     #activities {
-      background-color: var(--color-dark-bg);
-      padding: 5rem 1rem;
+      background-color: #fff;
+      padding: 6rem 1rem;
     }
     .activity-card {
       border: none;
-      background-color: #fff;
-      border-radius: 12px;
-      transition: transform var(--transition-speed),
-        box-shadow var(--transition-speed);
+      background-color: #fdfdfd;
+      border-radius: 15px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      overflow: hidden;
     }
     .activity-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
     .activity-icon {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
+      color: var(--color-secondary);
     }
     .activity-card .card-body {
-      padding: 2rem;
+      padding: 2.5rem;
+    }
+    .activity-card h5 {
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+    }
+    .activity-card p {
+      color: #666;
+      font-size: 0.975rem;
     }
 
     /* Registration Section */
     #register {
-      background-color: #fff;
-      padding: 5rem 1rem;
+      background-color: var(--color-light-bg);
+      padding: 6rem 1rem;
     }
     #register .card {
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
     }
     #register .card-body {
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
     }
     #register label {
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--color-primary);
     }
     #register .form-control,
     #register .form-select,
     #register textarea {
       border-radius: 8px;
-      transition: border-color var(--transition-speed),
-        box-shadow var(--transition-speed);
+      transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+      border: 1px solid #ccc;
     }
     #register .form-control:focus,
     #register .form-select:focus,
     #register textarea:focus {
       border-color: var(--color-secondary);
-      box-shadow: 0 0 8px rgba(24, 188, 156, 0.2);
+      box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
     }
     #register .btn-primary {
       background-color: var(--color-secondary);
       border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
+      padding: 0.85rem 2.5rem;
+      font-size: 1.05rem;
       border-radius: 50px;
-      transition: background-color var(--transition-speed),
-        transform var(--transition-speed);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
     }
     #register .btn-primary:hover {
-      background-color: #149a7d;
-      transform: translateY(-2px);
+      background-color: #e66e3f;
+      transform: translateY(-3px);
     }
 
     /* Contact Section */
     #contact {
-      background-color: var(--color-dark-bg);
-      padding: 5rem 1rem;
+      background-color: #fff;
+      padding: 6rem 1rem;
     }
     #contact .contact-info h5,
     #contact .contact-info p {
@@ -292,52 +339,58 @@
     }
     #contact .contact-info a {
       color: var(--color-secondary);
+      transition: color var(--transition-speed);
     }
     #contact .contact-info a:hover {
-      color: #149a7d;
+      color: #e66e3f;
     }
     #contact .form-control:focus {
       border-color: var(--color-secondary);
-      box-shadow: 0 0 8px rgba(24, 188, 156, 0.2);
+      box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
     }
     #contact .btn-primary {
       background-color: var(--color-secondary);
       border: none;
-      padding: 0.5rem 1.5rem;
+      padding: 0.7rem 2rem;
       border-radius: 50px;
-      transition: background-color var(--transition-speed),
-        transform var(--transition-speed);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
     }
     #contact .btn-primary:hover {
-      background-color: #149a7d;
+      background-color: #e66e3f;
       transform: translateY(-2px);
     }
 
     /* Footer */
     footer {
-      background-color: #fff;
-      padding: 2rem 1rem;
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 3rem 1rem;
       text-align: center;
-      color: var(--color-primary);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     footer a {
-      color: var(--color-secondary);
+      color: var(--color-accent);
       margin: 0 0.5rem;
       transition: transform var(--transition-speed);
     }
     footer a:hover {
       transform: scale(1.1);
+      color: #ffd700;
     }
     footer .social-icons a {
-      color: var(--color-primary);
+      color: #fff;
       margin: 0 0.5rem;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       transition: color var(--transition-speed), transform var(--transition-speed);
     }
     footer .social-icons a:hover {
-      color: var(--color-secondary);
+      color: var(--color-accent);
       transform: scale(1.2);
+    }
+    footer .footer-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #eee;
     }
 
     /* Back to Top Button */
@@ -349,13 +402,13 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 3rem;
-      height: 3rem;
+      width: 3.2rem;
+      height: 3.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.4rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -366,7 +419,7 @@
       visibility: visible;
     }
     #backToTop:hover {
-      background-color: #149a7d;
+      background-color: #e66e3f;
     }
   </style>
 </head>
@@ -389,7 +442,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
             <a class="nav-link active" href="#about">About</a>
           </li>
@@ -401,6 +454,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-3">
+            <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" class="text-primary">
+              <i class="bi bi-facebook fs-4"></i>
+            </a>
+            <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank" class="text-primary ms-2">
+              <i class="bi bi-instagram fs-4"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -415,27 +476,37 @@
         AKCYC envisions a world where children explore nature, think for
         themselves, and act to preserve our environment.
       </p>
-      <a href="#register" class="btn btn-primary btn-lg">
+      <a href="#register" class="btn btn-primary btn-lg btn-rounded">
         Join the Adventure
       </a>
     </div>
+    <!-- Optional subtle floating shapes -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="pointer-events:none;">
+      <div class="position-absolute" style="width:200px;height:200px;background:rgba(255,127,80,0.2);border-radius:50%;top:10%;left:5%;animation: float 8s ease-in-out infinite;"></div>
+      <div class="position-absolute" style="width:150px;height:150px;background:rgba(24,188,156,0.15);border-radius:50%;top:60%;left:75%;animation: float 10s ease-in-out infinite reverse;"></div>
+    </div>
   </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+      <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
+    </svg>
+  </div>
 
   <!-- About Section -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title fade-in">About AKCYC</h2>
+      <h2 class="section-title fade-in">About All Kids County Youth Camp</h2>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <p class="fade-in" style="transition-delay: 0.2s;">
-           AKCYC envisions a world in which children grow up exploring and connecting with nature, thinking for themselves and acting to preserve our our environment.
+            All Kids County Youth Camp envisions a world in which children grow up exploring and connecting
+            with nature, thinking for themselves and acting to preserve our environment. Since 20XX, our
+            expert counselors have guided campers through safe, unforgettable adventures—ranging from forest
+            treks to riverside campfires and starlit storytelling—fostering independence, teamwork, and a
+            lifelong passion for the outdoors.
           </p>
-          <!-- <p class="fade-in" style="transition-delay: 0.4s;">
-            Our mission is to nurture curiosity, encourage responsible stewardship
-            of nature, and build a community where every child—regardless of
-            background—feels empowered to think for themselves and protect our
-            planet.
-          </p> -->
         </div>
       </div>
     </div>
@@ -450,11 +521,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 0.2s;">
             <div class="card-body text-center">
-              <div class="activity-icon">🔥</div>
-              <h5 class="card-title">Camping & Campfire</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                🔥
+              </div>
+              <h5 class="card-title mt-3">Camping & Campfire</h5>
               <p class="card-text">
-                Learn to pitch tents, cook over a campfire, and share stories under
-                the stars.
+                Learn to pitch tents ✔︎  
+                Cook over a campfire ✔︎  
+                Share stories under the stars ✔︎
               </p>
             </div>
           </div>
@@ -463,11 +537,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 0.4s;">
             <div class="card-body text-center">
-              <div class="activity-icon">🥾</div>
-              <h5 class="card-title">Hiking & Nature Walks</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                🥾
+              </div>
+              <h5 class="card-title mt-3">Hiking & Nature Walks</h5>
               <p class="card-text">
-                Discover local flora and fauna on guided hikes, learning to identify
-                plants, birds, and animal tracks.
+                Guided forest treks ✔︎  
+                Flora & fauna identification ✔︎  
+                Wilderness survival tips ✔︎
               </p>
             </div>
           </div>
@@ -476,11 +553,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 0.6s;">
             <div class="card-body text-center">
-              <div class="activity-icon">🛶</div>
-              <h5 class="card-title">Kayaking & Water Play</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                🛶
+              </div>
+              <h5 class="card-title mt-3">Kayaking & Water Play</h5>
               <p class="card-text">
-                Paddle along gentle rivers, practice water safety, and play games
-                on the shore.
+                Safe paddle training ✔︎  
+                River exploration ✔︎  
+                Team water games ✔︎
               </p>
             </div>
           </div>
@@ -489,11 +569,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 0.8s;">
             <div class="card-body text-center">
-              <div class="activity-icon">🎨</div>
-              <h5 class="card-title">Arts & Crafts</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                🎨
+              </div>
+              <h5 class="card-title mt-3">Arts & Crafts</h5>
               <p class="card-text">
-                Express creativity with nature-inspired art: leaf rubbings,
-                friendship bracelets, and recycled-material sculptures.
+                Nature-inspired painting ✔︎  
+                Recycled-material creations ✔︎  
+                Friendship bracelet making ✔︎
               </p>
             </div>
           </div>
@@ -502,11 +585,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 1s;">
             <div class="card-body text-center">
-              <div class="activity-icon">⚽</div>
-              <h5 class="card-title">Team Sports & Games</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                ⚽
+              </div>
+              <h5 class="card-title mt-3">Team Sports & Games</h5>
               <p class="card-text">
-                Soccer, relay races, scavenger hunts, and other cooperative games
-                that build teamwork and sportsmanship.
+                Soccer tournaments ✔︎  
+                Relay races ✔︎  
+                Scavenger hunts ✔︎
               </p>
             </div>
           </div>
@@ -515,11 +601,14 @@
         <div class="col-sm-6 col-lg-4">
           <div class="card activity-card fade-in" style="transition-delay: 1.2s;">
             <div class="card-body text-center">
-              <div class="activity-icon">🧗‍♂️</div>
-              <h5 class="card-title">High Ropes & Climbing</h5>
+              <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
+                🧗‍♂️
+              </div>
+              <h5 class="card-title mt-3">High Ropes & Climbing</h5>
               <p class="card-text">
-                Challenge yourself on a supervised ropes course, learn to belay,
-                and build confidence at height.
+                Supervised climbing walls ✔︎  
+                Ropes course challenges ✔︎  
+                Confidence-building ✔︎
               </p>
             </div>
           </div>
@@ -527,6 +616,13 @@
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider Bottom -->
+  <div class="wave-divider">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+      <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
+    </svg>
+  </div>
 
   <!-- Registration Section -->
   <section id="register">
@@ -673,7 +769,7 @@
                 <div class="text-center mt-4">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-lg"
+                    class="btn btn-primary btn-rounded"
                   >
                     Submit Registration
                   </button>
@@ -695,27 +791,24 @@
         <div class="col-lg-5 contact-info fade-in" style="transition-delay: 0.2s;">
           <h5>Camp Office</h5>
           <p class="mb-1">
-            <i class="bi bi-geo-alt-fill me-2"></i>
+            <i class="bi bi-geo-alt-fill me-2 text-secondary"></i>
             123 Forest Way, Somewhere, Country 12345
           </p>
           <p class="mb-1">
-            <i class="bi bi-envelope-fill me-2"></i>
+            <i class="bi bi-envelope-fill me-2 text-secondary"></i>
             <a href="mailto:info@akc yc.org">info@akc yc.org</a>
           </p>
           <p>
-            <i class="bi bi-telephone-fill me-2"></i>
+            <i class="bi bi-telephone-fill me-2 text-secondary"></i>
             (555) 987-6543
           </p>
           <div class="mt-3">
             <h6>Follow Us</h6>
-            <a href="#" aria-label="Facebook">
-              <i class="bi bi-facebook fs-4 me-3"></i>
+            <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" class="me-3">
+              <i class="bi bi-facebook fs-4"></i>
             </a>
-            <a href="#" aria-label="Instagram">
-              <i class="bi bi-instagram fs-4 me-3"></i>
-            </a>
-            <a href="#" aria-label="Twitter">
-              <i class="bi bi-twitter fs-4"></i>
+            <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank">
+              <i class="bi bi-instagram fs-4"></i>
             </a>
           </div>
         </div>
@@ -757,7 +850,7 @@
             <div class="text-end">
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-primary btn-rounded"
               >
                 Send Message
               </button>
@@ -775,10 +868,6 @@
       <p class="mb-2">
         “AKCYC: Inspiring kids to explore, learn, and protect our world.”
       </p>
-      <div>
-        <a href="#" aria-label="Privacy Policy">Privacy Policy</a> |
-        <a href="#" aria-label="Terms of Service">Terms of Service</a>
-      </div>
       <div class="social-icons mt-3">
         <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" aria-label="Facebook">
           <i class="bi bi-facebook"></i>
@@ -787,6 +876,9 @@
           <i class="bi bi-instagram"></i>
         </a>
       </div>
+      <p class="footer-note mt-3">
+        Designed with ♥ by the AKCYC Team. All rights reserved.
+      </p>
     </div>
   </footer>
 
@@ -837,6 +929,21 @@
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    // Floating shapes animation
+    const floatElements = document.querySelectorAll("[style*='animation: float']");
+    floatElements.forEach((el, idx) => {
+      el.style.setProperty("animation-delay", `${idx * 2}s`);
+    });
   </script>
+
+  <style>
+    /* Floating animation */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
 </body>
 </html>
