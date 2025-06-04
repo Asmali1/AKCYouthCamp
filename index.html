@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>All Kids County Youth Camp (AKCYC)</title>
   <meta name="description" content="AKCYC—where children explore nature, think independently, and learn to preserve our environment. Register now for a transformative camp experience!" />
-  <meta name="author" content="AKCYC Team" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Google Fonts: Poppins & Source Sans Pro -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -33,8 +32,8 @@
       --color-primary: #1a3d5f;
       --color-secondary: #ff7f50;
       --color-accent: #ffe066;
-      --color-light-bg: #f0f4f8;
-      --color-dark-bg: #ffffff;
+      --color-bg-light: #f0f4f8;
+      --color-bg-dark: #ffffff;
       --transition-speed: 0.35s;
       --font-heading: "Poppins", sans-serif;
       --font-body: "Source Sans Pro", sans-serif;
@@ -54,7 +53,7 @@
     body {
       font-family: var(--font-body);
       line-height: 1.65;
-      background-color: var(--color-light-bg);
+      background-color: var(--color-bg-light);
       color: #333;
       padding-top: 80px; /* space for fixed nav */
     }
@@ -74,6 +73,9 @@
     p {
       margin-bottom: 1rem;
     }
+    .btn-rounded {
+      border-radius: 50px;
+    }
 
     /* Utility Classes */
     .text-accent {
@@ -83,19 +85,28 @@
       background-color: var(--color-secondary) !important;
       color: #fff;
     }
-    .btn-rounded {
-      border-radius: 50px;
+    .shadow-lg-custom {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-btn {
+      background: linear-gradient(45deg, var(--color-secondary), var(--color-accent));
+      color: #fff;
+      border: none;
+      transition: background var(--transition-speed);
+    }
+    .gradient-btn:hover {
+      background: linear-gradient(45deg, var(--color-accent), var(--color-secondary));
     }
     .section-divider {
       position: relative;
-      height: 100px;
+      height: 80px;
       overflow: hidden;
       transform: translateY(-1px);
     }
     .section-divider svg {
       display: block;
       width: 100%;
-      height: 100px;
+      height: 80px;
     }
 
     /* Navbar */
@@ -104,10 +115,11 @@
       backdrop-filter: saturate(200%) blur(20px);
       transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
       height: 80px;
+      z-index: 1000;
     }
     .navbar.scrolled {
       background-color: var(--color-primary);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
     .navbar .navbar-brand {
       font-size: 1.6rem;
@@ -122,10 +134,10 @@
       font-weight: 500;
       color: var(--color-primary);
       transition: color var(--transition-speed);
-      margin: 0 0.5rem;
+      margin: 0 0.7rem;
     }
     .navbar.scrolled .nav-link {
-      color: #eee;
+      color: #f8f9fa;
     }
     .navbar .nav-link:hover {
       color: var(--color-secondary) !important;
@@ -135,6 +147,7 @@
     }
     .navbar .navbar-toggler-icon {
       color: var(--color-primary);
+      font-size: 1.2rem;
     }
     .navbar.scrolled .navbar-toggler-icon {
       filter: invert(1);
@@ -159,11 +172,11 @@
       animation: fadeInDown 1s ease-out both;
     }
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.8rem;
       font-weight: 700;
       line-height: 1.2;
       text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
     .hero p.lead {
       font-size: 1.4rem;
@@ -184,22 +197,37 @@
       transform: translateY(-3px);
     }
 
-    /* Wave Divider */
-    .wave-divider {
+    /* Floating Shapes */
+    .hero .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero .shape.small { width: 150px; height: 150px; background: var(--color-accent); top: 10%; left: 5%; }
+    .hero .shape.medium { width: 200px; height: 200px; background: var(--color-secondary); bottom: 15%; right: 10%; animation-duration: 10s; }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
+    /* Wave Divider (top) */
+    .wave-divider-top {
       position: relative;
       width: 100%;
       overflow: hidden;
       line-height: 0;
       transform: rotate(180deg);
     }
-    .wave-divider svg {
+    .wave-divider-top svg {
       position: relative;
       display: block;
       width: calc(150% + 1.3px);
-      height: 120px;
+      height: 100px;
     }
-    .wave-divider .shape-fill {
-      fill: var(--color-light-bg);
+    .wave-divider-top .shape-fill {
+      fill: var(--color-bg-light);
     }
 
     /* Section Titles */
@@ -208,6 +236,7 @@
       position: relative;
       margin-top: 2rem;
       margin-bottom: 2rem;
+      text-align: center;
     }
     h2.section-title::after {
       content: "";
@@ -250,6 +279,49 @@
       color: #555;
     }
 
+    /* Features/Banner Section */
+    #features {
+      background: url("https://via.placeholder.com/1920x600/ffffff/cccccc?text=Nature+Backdrop") no-repeat center/cover;
+      position: relative;
+      color: #fff;
+      padding: 6rem 1rem;
+      text-align: center;
+    }
+    #features::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    #features .features-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #features h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    #features p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    #features .btn-light {
+      background-color: #fff;
+      color: var(--color-primary);
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
+    }
+    #features .btn-light:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
     /* Activities Section */
     #activities {
       background-color: #fff;
@@ -284,9 +356,39 @@
       font-size: 0.975rem;
     }
 
+    /* Testimonials Section */
+    #testimonials {
+      background-color: var(--color-light-bg);
+      padding: 6rem 1rem;
+      position: relative;
+    }
+    #testimonials .testimonial-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: transform var(--transition-speed);
+    }
+    #testimonials .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    #testimonials .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+    #testimonials .testimonial-author {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    #testimonials .carousel-indicators [data-bs-target] {
+      background-color: var(--color-secondary);
+    }
+
     /* Registration Section */
     #register {
-      background-color: var(--color-light-bg);
+      background-color: var(--color-bg-light);
       padding: 6rem 1rem;
     }
     #register .card {
@@ -367,6 +469,8 @@
       padding: 3rem 1rem;
       text-align: center;
       font-size: 0.95rem;
+      position: relative;
+      overflow: hidden;
     }
     footer a {
       color: var(--color-accent);
@@ -447,7 +551,13 @@
             <a class="nav-link active" href="#about">About</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#features">Why AKCYC?</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#activities">Activities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#register">Register</a>
@@ -470,7 +580,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content container">
+    <div class="hero-content container text-center">
       <h1>All KIDS COUNT</h1>
       <p class="lead">
         AKCYC envisions a world where children explore nature, think for
@@ -480,15 +590,13 @@
         Join the Adventure
       </a>
     </div>
-    <!-- Optional subtle floating shapes -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="pointer-events:none;">
-      <div class="position-absolute" style="width:200px;height:200px;background:rgba(255,127,80,0.2);border-radius:50%;top:10%;left:5%;animation: float 8s ease-in-out infinite;"></div>
-      <div class="position-absolute" style="width:150px;height:150px;background:rgba(24,188,156,0.15);border-radius:50%;top:60%;left:75%;animation: float 10s ease-in-out infinite reverse;"></div>
-    </div>
+    <!-- Floating Shapes -->
+    <div class="shape small"></div>
+    <div class="shape medium"></div>
   </section>
 
-  <!-- Wave Divider -->
-  <div class="wave-divider">
+  <!-- Wave Divider Top -->
+  <div class="wave-divider-top">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
       <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
     </svg>
@@ -502,13 +610,25 @@
         <div class="col-lg-8">
           <p class="fade-in" style="transition-delay: 0.2s;">
             All Kids County Youth Camp envisions a world in which children grow up exploring and connecting
-            with nature, thinking for themselves and acting to preserve our environment. Since 20XX, our
-            expert counselors have guided campers through safe, unforgettable adventures—ranging from forest
-            treks to riverside campfires and starlit storytelling—fostering independence, teamwork, and a
-            lifelong passion for the outdoors.
+            with nature, thinking for themselves and acting to preserve our environment. 
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Features/Banner Section -->
+  <section id="features">
+    <div class="features-content container">
+      <h2>Why Choose AKCYC?</h2>
+      <p>
+        We go beyond ordinary camps: immersive nature experiences, personalized mentorship, and eco-friendly
+        practices. Our holistic approach ensures every camper builds confidence, resilience, and environmental
+        stewardship.
+      </p>
+      <a href="#register" class="btn btn-light btn-rounded">
+        Learn More & Register
+      </a>
     </div>
   </section>
 
@@ -526,9 +646,7 @@
               </div>
               <h5 class="card-title mt-3">Camping & Campfire</h5>
               <p class="card-text">
-                Learn to pitch tents ✔︎  
-                Cook over a campfire ✔︎  
-                Share stories under the stars ✔︎
+                Pitch tents, cook over a campfire, share stories under the stars.
               </p>
             </div>
           </div>
@@ -542,9 +660,7 @@
               </div>
               <h5 class="card-title mt-3">Hiking & Nature Walks</h5>
               <p class="card-text">
-                Guided forest treks ✔︎  
-                Flora & fauna identification ✔︎  
-                Wilderness survival tips ✔︎
+                Guided forest treks, flora & fauna identification, wilderness survival tips.
               </p>
             </div>
           </div>
@@ -558,9 +674,7 @@
               </div>
               <h5 class="card-title mt-3">Kayaking & Water Play</h5>
               <p class="card-text">
-                Safe paddle training ✔︎  
-                River exploration ✔︎  
-                Team water games ✔︎
+                Safe paddle training, river exploration, team water games.
               </p>
             </div>
           </div>
@@ -574,9 +688,7 @@
               </div>
               <h5 class="card-title mt-3">Arts & Crafts</h5>
               <p class="card-text">
-                Nature-inspired painting ✔︎  
-                Recycled-material creations ✔︎  
-                Friendship bracelet making ✔︎
+                Nature-inspired painting, recycled-material creations, friendship bracelet making.
               </p>
             </div>
           </div>
@@ -590,9 +702,7 @@
               </div>
               <h5 class="card-title mt-3">Team Sports & Games</h5>
               <p class="card-text">
-                Soccer tournaments ✔︎  
-                Relay races ✔︎  
-                Scavenger hunts ✔︎
+                Soccer tournaments, relay races, scavenger hunts, cooperative games.
               </p>
             </div>
           </div>
@@ -604,11 +714,9 @@
               <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
                 🧗‍♂️
               </div>
-              <h5 class="card-title mt-3">High Ropes & Climbing</h5>
+              <h5 class="card-title mt-3">Hiking</h5>
               <p class="card-text">
-                Supervised climbing walls ✔︎  
-                Ropes course challenges ✔︎  
-                Confidence-building ✔︎
+                Supervised confidence-building.
               </p>
             </div>
           </div>
@@ -618,11 +726,54 @@
   </section>
 
   <!-- Wave Divider Bottom -->
-  <div class="wave-divider">
+  <div class="wave-divider-top" style="transform: rotate(0deg);">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
       <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
     </svg>
   </div>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title fade-in">Testimonials</h2>
+      <div id="testimonialCarousel" class="carousel slide fade-in" data-bs-ride="carousel" style="transition-delay: 0.2s;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonial-card mx-auto" style="max-width:600px;">
+              <p class="testimonial-text">
+                “AKCYC changed my child’s life! The counselors were amazing, and the variety of activities kept
+                her engaged and excited every single day. Highly recommend!”
+              </p>
+              <p class="testimonial-author">— Sarah M., Parent</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card mx-auto" style="max-width:600px;">
+              <p class="testimonial-text">
+                “From kayaking at dawn to stargazing at night, every moment was unforgettable. My son returned
+                more confident and eager to help protect the environment.”
+              </p>
+              <p class="testimonial-author">— Jason L., Camper</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card mx-auto" style="max-width:600px;">
+              <p class="testimonial-text">
+                “The focus on nature education and team-building is top-notch. We love AKCYC’s mission and
+                can’t wait to come back next summer!”
+              </p>
+              <p class="testimonial-author">— Emily K., Parent</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-indicators mt-3">
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Registration Section -->
   <section id="register">
@@ -769,7 +920,7 @@
                 <div class="text-center mt-4">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-rounded"
+                    class="btn btn-primary btn-rounded gradient-btn"
                   >
                     Submit Registration
                   </button>
@@ -850,7 +1001,7 @@
             <div class="text-end">
               <button
                 type="submit"
-                class="btn btn-primary btn-rounded"
+                class="btn btn-primary btn-rounded gradient-btn"
               >
                 Send Message
               </button>
@@ -929,21 +1080,6 @@
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    // Floating shapes animation
-    const floatElements = document.querySelectorAll("[style*='animation: float']");
-    floatElements.forEach((el, idx) => {
-      el.style.setProperty("animation-delay", `${idx * 2}s`);
-    });
   </script>
-
-  <style>
-    /* Floating animation */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
-    }
-  </style>
 </body>
 </html>
