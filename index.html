@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>All Kids County Youth Camp (AKCYC)</title>
+  <title>All Kids Count Youth Camp (AKCYC)</title>
   <meta name="description" content="AKCYC—where children explore nature, think independently, and learn to preserve our environment. Register now for a transformative camp experience!" />
   <link rel="icon" href="favicon.ico" />
 
@@ -55,7 +55,7 @@
       line-height: 1.65;
       background-color: var(--color-bg-light);
       color: #333;
-      padding-top: 80px; /* space for fixed nav */
+      padding-top: 56px; /* space for fixed nav (default Bootstrap navbar height) */
     }
     a {
       color: var(--color-primary);
@@ -114,8 +114,8 @@
       background-color: rgba(255, 255, 255, 0.9);
       backdrop-filter: saturate(200%) blur(20px);
       transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
-      height: 80px;
       z-index: 1000;
+      /* height removed so navbar can expand */
     }
     .navbar.scrolled {
       background-color: var(--color-primary);
@@ -271,7 +271,7 @@
 
     /* About Section */
     #about {
-      background-color: var(--color-light-bg);
+      background-color: var(--color-bg-light);
       padding: 6rem 1rem;
     }
     #about p {
@@ -358,7 +358,7 @@
 
     /* Testimonials Section */
     #testimonials {
-      background-color: var(--color-light-bg);
+      background-color: var(--color-bg-light);
       padding: 6rem 1rem;
       position: relative;
     }
@@ -581,7 +581,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content container text-center">
-      <h1>All KIDS COUNT</h1>
+      <h1>All KIDS COUNT YOUTH CAMP</h1>
       <p class="lead">
         AKCYC envisions a world where children explore nature, think for
         themselves, and act to preserve our environment.
@@ -597,7 +597,7 @@
 
   <!-- Wave Divider Top -->
   <div class="wave-divider-top">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+    <svg data-name="Layer 1" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
       <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
     </svg>
   </div>
@@ -605,12 +605,12 @@
   <!-- About Section -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title fade-in">About All Kids County Youth Camp</h2>
+      <h2 class="section-title fade-in">About All Kids Count Youth Camp</h2>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <p class="fade-in" style="transition-delay: 0.2s;">
-            All Kids County Youth Camp envisions a world in which children grow up exploring and connecting
-            with nature, thinking for themselves and acting to preserve our environment. 
+            All Kids Count Youth Camp envisions a world in which children grow up exploring and connecting
+            with nature, thinking for themselves and acting to preserve our environment.
           </p>
         </div>
       </div>
@@ -714,9 +714,9 @@
               <div class="activity-icon bg-accent rounded-circle d-inline-flex align-items-center justify-content-center" style="width:80px;height:80px;">
                 🧗‍♂️
               </div>
-              <h5 class="card-title mt-3">Hiking</h5>
+              <h5 class="card-title mt-3">High Ropes & Climbing</h5>
               <p class="card-text">
-                Supervised confidence-building.
+                Supervised confidence-building challenges on our ropes course.
               </p>
             </div>
           </div>
@@ -727,7 +727,7 @@
 
   <!-- Wave Divider Bottom -->
   <div class="wave-divider-top" style="transform: rotate(0deg);">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+    <svg data-name="Layer 1" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
       <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
     </svg>
   </div>
@@ -1015,7 +1015,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 All Kids County Youth Camp</p>
+      <p>&copy; 2025 All Kids Count Youth Camp</p>
       <p class="mb-2">
         “AKCYC: Inspiring kids to explore, learn, and protect our world.”
       </p>
