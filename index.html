@@ -546,5 +546,32 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+  <script>
+  // HIDE HERO WHENEVER ANY TAB IS SHOWN
+  const hero = document.querySelector('.hero');
+  document
+    .querySelectorAll('.nav-link[data-bs-toggle="tab"]')
+    .forEach(tab => {
+      tab.addEventListener('shown.bs.tab', () => {
+        hero.classList.add('d-none');
+      });
+    });
+  // SHOW HERO WHEN ABOUT TAB IS ACTIVE
+  const aboutTab = document.querySelector('.nav-link[data-bs-target="#about"]');
+  aboutTab.addEventListener('shown.bs.tab', () => {
+    hero.classList.remove('d-none');
+  });
+  // INITIALIZE CAROUSEL
+  const testimonialCarousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+    interval: 5000,
+    wrap: true
+  });
+  // AUTO-ADVANCE CAROUSEL
+  setInterval(() => {
+    testimonialCarousel.next();
+  }, 5000);
+  
+</script>
+
 </body>
 </html>
