@@ -38,38 +38,75 @@
 
 <body>
   <!-- NAV TABS -->
-  <nav class="navbar fixed-top bg-white">
-    <div class="container">
-      <ul class="nav nav-tabs w-100 justify-content-center">
-        <li class="nav-item">
-          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button">About</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#features" type="button">Why AKCYC?</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activities" type="button">Activities</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#testimonials" type="button">Testimonials</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#register" type="button">Register</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contact" type="button">Contact</button>
-        </li>
-              <li class="nav-item">
-        <button 
-          class="nav-link btn btn-warning text-dark ms-3" 
-          zeffy-form-link="https://www.zeffy.com/embed/donation-form/donate-to-all-kids-count-youth-camp?modal=true"
-        >
-          Donate
-        </button>
-      </li>
+<nav class="navbar navbar-expand-lg fixed-top bg-white">
+  <div class="container">
+    <!-- Logo / Brand -->
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.jpg" alt="AKCYC Logo" height="40" />
+    </a>
+
+    <!-- Mobile toggler: opens offcanvas -->
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasMenu"
+      aria-controls="offcanvasMenu"
+      aria-label="Toggle menu"
+    >
+      <i class="bi bi-list fs-2"></i>
+    </button>
+
+    <!-- Desktop nav-tabs (hidden on mobile) -->
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="mainNav">
+      <ul class="nav nav-tabs me-auto">
+        <!-- same tabs as before -->
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-target="#features" data-bs-toggle="tab">Why AKCYC?</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-target="#activities" data-bs-toggle="tab">Activities</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-target="#testimonials" data-bs-toggle="tab">Testimonials</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-target="#register" data-bs-toggle="tab">Register</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-target="#contact" data-bs-toggle="tab">Contact</button></li>
       </ul>
+      <button
+        class="btn btn-warning ms-3"
+        zeffy-form-link="https://www.zeffy.com/embed/donation-form/donate-to-all-kids-count-youth-camp?modal=true"
+      >
+        Donate
+      </button>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<!-- Offcanvas for mobile -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasMenu"
+  aria-labelledby="offcanvasMenuLabel"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasMenuLabel">Menu</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav nav-pills flex-column mb-3">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-target="#features" data-bs-toggle="tab">Why AKCYC?</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-target="#activities" data-bs-toggle="tab">Activities</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-target="#testimonials" data-bs-toggle="tab">Testimonials</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-target="#register" data-bs-toggle="tab">Register</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-target="#contact" data-bs-toggle="tab">Contact</button></li>
+    </ul>
+    <button
+      class="btn btn-warning w-100"
+      zeffy-form-link="https://www.zeffy.com/embed/donation-form/donate-to-all-kids-count-youth-camp?modal=true"
+    >
+      Donate
+    </button>
+  </div>
+</div>
+
 
   <!-- HERO SECTION (always visible) -->
   <section class="hero">
@@ -555,31 +592,43 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
-  <script>
-  // HIDE HERO WHENEVER ANY TAB IS SHOWN
+<script>
   const hero = document.querySelector('.hero');
+
   document
     .querySelectorAll('.nav-link[data-bs-toggle="tab"]')
     .forEach(tab => {
-      tab.addEventListener('shown.bs.tab', () => {
-        hero.classList.add('d-none');
+      tab.addEventListener('shown.bs.tab', e => {
+        // e.target is the tab button just activated
+        const target = e.target.getAttribute('data-bs-target');
+        if (target === '#about') {
+          hero.classList.remove('d-none');
+        } else {
+          hero.classList.add('d-none');
+        }
       });
     });
-  // SHOW HERO WHEN ABOUT TAB IS ACTIVE
-  const aboutTab = document.querySelector('.nav-link[data-bs-target="#about"]');
-  aboutTab.addEventListener('shown.bs.tab', () => {
-    hero.classList.remove('d-none');
+</script>
+
+<script>
+  // collapse burger menu on tab click
+  document.querySelectorAll('.nav-link[data-bs-toggle="tab"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const navCollapseEl = document.getElementById('mainNav');
+      // if the collapse is currently shown, hide it
+      if (navCollapseEl.classList.contains('show')) {
+        bootstrap.Collapse.getOrCreateInstance(navCollapseEl).hide();
+      }
+    });
   });
-  // INITIALIZE CAROUSEL
-  const testimonialCarousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
-    interval: 5000,
-    wrap: true
+  // whenever any tab inside the offcanvas is shown, hide it
+document.querySelectorAll('#offcanvasMenu .nav-link[data-bs-toggle="tab"]')
+  .forEach(btn => {
+    btn.addEventListener('shown.bs.tab', () => {
+      bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasMenu')).hide();
+    });
   });
-  // AUTO-ADVANCE CAROUSEL
-  setInterval(() => {
-    testimonialCarousel.next();
-  }, 5000);
-  
+
 </script>
 
 </body>
