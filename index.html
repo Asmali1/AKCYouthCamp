@@ -79,33 +79,54 @@
 </nav>
 
 <!-- Offcanvas for mobile -->
+<!-- Offcanvas for mobile -->
 <div
   class="offcanvas offcanvas-end"
   tabindex="-1"
   id="offcanvasMenu"
   aria-labelledby="offcanvasMenuLabel"
 >
-  <div class="offcanvas-header">
-    <h5 id="offcanvasMenuLabel">Menu</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <div class="offcanvas-header border-bottom">
+    <!-- You can swap this out for your logo if you like -->
+    <h5 id="offcanvasMenuLabel" class="m-0">Menu</h5>
+    <button type="button" class="btn-close me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
+
+  <!-- make this a flex column so we can push donate to the bottom -->
+  <div class="offcanvas-body d-flex flex-column p-3">
     <ul class="nav nav-pills flex-column mb-3">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-target="#features" data-bs-toggle="tab">Why AKCYC?</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-target="#activities" data-bs-toggle="tab">Activities</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-target="#testimonials" data-bs-toggle="tab">Testimonials</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-target="#register" data-bs-toggle="tab">Register</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-target="#contact" data-bs-toggle="tab">Contact</button></li>
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-target="#features" data-bs-toggle="tab">Why AKCYC?</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-target="#activities" data-bs-toggle="tab">Activities</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-target="#testimonials" data-bs-toggle="tab">Testimonials</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-target="#register" data-bs-toggle="tab">Register</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-target="#contact" data-bs-toggle="tab">Contact</button>
+      </li>
     </ul>
-    <button
-      class="btn btn-warning w-100"
-      zeffy-form-link="https://www.zeffy.com/embed/donation-form/donate-to-all-kids-count-youth-camp?modal=true"
-    >
-      Donate
-    </button>
+
+    <!-- spacer -->
+    <div class="mt-auto">
+      <button
+        class="btn btn-warning w-100"
+        zeffy-form-link="https://www.zeffy.com/embed/donation-form/donate-to-all-kids-count-youth-camp?modal=true"
+      >
+        Donate
+      </button>
+    </div>
   </div>
 </div>
+
 
 
   <!-- HERO SECTION (always visible) -->
