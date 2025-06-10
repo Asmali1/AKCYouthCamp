@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <head>
@@ -29,71 +30,39 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     rel="stylesheet"
   />
-  <!-- Custom CSS -->
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <!-- NAV TABS -->
+  <nav class="navbar fixed-top bg-white">
     <div class="container">
-<a class="navbar-brand" href="#">
-  <img src="images/logo.jpg" alt="AKCYC Logo" height="40" />
-</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
-        aria-controls="navbarContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-          <li class="nav-item">
-            <a class="nav-link active" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#features">Why AKCYC?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#activities">Activities</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonials">Testimonials</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item ms-3">
-            <a
-              href="https://www.facebook.com/YourAKCYCFacebook"
-              target="_blank"
-              class="text-gray-dark"
-            >
-              <i class="bi bi-facebook fs-4"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/YourAKCYCInstagram"
-              target="_blank"
-              class="text-gray-dark ms-2"
-            >
-              <i class="bi bi-instagram fs-4"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <ul class="nav nav-tabs w-100 justify-content-center">
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about" type="button">About</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#features" type="button">Why AKCYC?</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activities" type="button">Activities</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#testimonials" type="button">Testimonials</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#register" type="button">Register</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contact" type="button">Contact</button>
+        </li>
+      </ul>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (always visible) -->
   <section class="hero">
     <div class="hero‐content container text-center">
       <h1>
@@ -104,14 +73,10 @@
         <span class="word‐blue">Camp</span>
       </h1>
       <p class="lead">
-        AKCYC envisions a world where children explore nature, think for
-        themselves, and act to preserve our environment.
+        AKCYC envisions a world where children explore nature, think for themselves, and act to preserve our environment.
       </p>
-      <a href="#register" class="btn btn‐join btn-lg btn-rounded">
-        Join the Adventure
-      </a>
+      <a href="#register" class="btn btn‐join btn-lg btn-rounded">Join the Adventure</a>
     </div>
-    <!-- Floating Shapes -->
     <div class="shape small"></div>
     <div class="shape medium"></div>
     <div class="shape large"></div>
@@ -119,602 +84,427 @@
 
   <!-- WAVE DIVIDER TOP -->
   <div class="wave-divider-top">
-    <svg
-      data-name="Layer 1"
-      xmlns="https://www.w3.org/2000/svg"
-      viewBox="0 0 1200 120"
-    >
-      <path
-        d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z"
-        class="shape-fill"
-      ></path>
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+      <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
     </svg>
   </div>
 
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <div class="container">
-      <h2 class="fade-in">About All Kids Count Youth Camp</h2>
-      <p class="fade-in" style="transition-delay: 0.2s;">
-        All Kids Count Youth Camp envisions a world in which children grow up
-        exploring and connecting with nature, thinking for themselves, and
-        acting to preserve our environment. Our mission is to foster
-        confidence, creativity, and environmental stewardship through
-        hands-on experiences in the great outdoors.
-      </p>
+  <!-- TAB CONTENT -->
+  <div class="tab-content mt-5">
+    <!-- ABOUT -->
+    <div id="about" class="tab-pane fade show active">
+      <div class="container">
+        <h2 class="fade-in">About All Kids Count Youth Camp</h2>
+        <p class="fade-in" style="transition-delay: 0.2s;">
+          All Kids Count Youth Camp envisions a world in which children grow up exploring and connecting with nature, thinking for themselves, and
+          acting to preserve our environment. Our mission is to foster confidence, creativity, and environmental stewardship through hands-on experiences
+          in the great outdoors.
+        </p>
+      </div>
     </div>
-  </section>
 
-  <!-- FEATURES / WHY AKCYC SECTION -->
-  <section id="features">
-    <div class="features-content container fade-in">
-      <h2>Why Choose AKCYC?</h2>
-      <p>
-        We go beyond ordinary camps: immersive nature experiences, personalized
-        mentorship, and eco-friendly practices. Our holistic approach ensures
-        every camper builds confidence, resilience, and environmental
-        stewardship—just like the colorful spirit of All Kids Count!
-      </p>
-      <a href="#register" class="btn btn-light btn-rounded">
-        Learn More & Register
-      </a>
+    <!-- FEATURES -->
+    <div id="features" class="tab-pane fade">
+      <div class="features-content container fade-in">
+        <h2>Why Choose AKCYC?</h2>
+        <p>
+          We go beyond ordinary camps: immersive nature experiences, personalized mentorship, and eco-friendly practices. Our holistic approach ensures
+          every camper builds confidence, resilience, and environmental stewardship—just like the colorful spirit of All Kids Count!
+        </p>
+        <a href="#register" class="btn btn-light btn-rounded">Learn More &amp; Register</a>
+      </div>
     </div>
-  </section>
 
-  <!-- ACTIVITIES SECTION -->
-  <section id="activities">
-    <div class="container">
-      <h2 class="fade-in">Camp Activities</h2>
-      <div class="row g-4">
-        <!-- Camping & Campfire -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.2s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-orange">
-                🔥
+    <!-- ACTIVITIES -->
+    <div id="activities" class="tab-pane fade">
+      <div class="container">
+        <h2 class="fade-in">Camp Activities</h2>
+        <div class="row g-4">
+          <!-- Camping & Campfire -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.2s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-orange">🔥</div>
+                <h5>Camping & Campfire</h5>
+                <p>Pitch tents, cook over a campfire, share stories under the stars.</p>
               </div>
-              <h5>Camping & Campfire</h5>
-              <p>Pitch tents, cook over a campfire, share stories under the stars.</p>
             </div>
           </div>
-        </div>
-        <!-- Hiking & Nature Walks -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.4s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-green">
-                🥾
+          <!-- Hiking & Nature Walks -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.4s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-green">🥾</div>
+                <h5>Hiking &amp; Nature Walks</h5>
+                <p>Guided forest treks, flora &amp; fauna identification, wilderness survival tips.</p>
               </div>
-              <h5>Hiking & Nature Walks</h5>
-              <p>Guided forest treks, flora & fauna identification, wilderness survival tips.</p>
             </div>
           </div>
-        </div>
-        <!-- Kayaking & Water Play -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.6s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-blue">
-                🛶
+          <!-- Kayaking & Water Play -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.6s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-blue">🛶</div>
+                <h5>Kayaking &amp; Water Play</h5>
+                <p>Safe paddle training, river exploration, team water games.</p>
               </div>
-              <h5>Kayaking & Water Play</h5>
-              <p>Safe paddle training, river exploration, team water games.</p>
             </div>
           </div>
-        </div>
-        <!-- Arts & Crafts -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.8s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-purple">
-                🎨
+          <!-- Arts & Crafts -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:0.8s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-purple">🎨</div>
+                <h5>Arts &amp; Crafts</h5>
+                <p>Nature-inspired painting, recycled-material creations, friendship bracelet making.</p>
               </div>
-              <h5>Arts & Crafts</h5>
-              <p>Nature-inspired painting, recycled-material creations, friendship bracelet making.</p>
             </div>
           </div>
-        </div>
-        <!-- Team Sports & Games -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-red">
-                ⚽
+          <!-- Team Sports & Games -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-red">⚽</div>
+                <h5>Team Sports &amp; Games</h5>
+                <p>Soccer tournaments, relay races, scavenger hunts, cooperative games.</p>
               </div>
-              <h5>Team Sports & Games</h5>
-              <p>Soccer tournaments, relay races, scavenger hunts, cooperative games.</p>
             </div>
           </div>
-        </div>
-        <!-- High Ropes & Climbing -->
-        <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.2s;">
-          <div class="card activity-card">
-            <div class="card-body text-center">
-              <div class="activity-icon icon-green">
-                🧗‍♂️
+          <!-- High Ropes & Climbing -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.2s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-green">🧗‍♂️</div>
+                <h5>High Ropes &amp; Climbing</h5>
+                <p>Supervised confidence-building challenges on our ropes course.</p>
               </div>
-              <h5>High Ropes & Climbing</h5>
-              <p>Supervised confidence-building challenges on our ropes course.</p>
+            </div>
+          </div>
+          <!-- Swimming -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.4s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-blue">🏊‍♂️</div>
+                <h5>Swimming</h5>
+                <p>Pool fun, water games, and basic swim lessons.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Horseback Riding -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.6s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-purple">🏇</div>
+                <h5>Horseback Riding</h5>
+                <p>Guided trail rides and basic horsemanship skills.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Petting Zoo -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.8s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-green">🐐</div>
+                <h5>Petting Zoo</h5>
+                <p>Meet and feed friendly farm animals.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Farming -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-orange">🌾</div>
+                <h5>Farming</h5>
+                <p>Learn planting, harvesting, and sustainable farm chores.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Tractor Rides -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.2s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-red">🚜</div>
+                <h5>Tractor Rides</h5>
+                <p>Fun tractor tours around the campgrounds.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Wagon Rides -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.4s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-blue">🛺</div>
+                <h5>Wagon Rides</h5>
+                <p>Horse-drawn wagon tours through the woods.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Fishing -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.6s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-green">🎣</div>
+                <h5>Fishing</h5>
+                <p>Catch &amp; release fishing at our stocked pond.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Bow & Arrow -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.8s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-purple">🏹</div>
+                <h5>Bow &amp; Arrow</h5>
+                <p>Intro to archery safety and target practice.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Target Shooting -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-red">🎯</div>
+                <h5>Target Shooting</h5>
+                <p>Safe pellet-gun shooting at stationary targets.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Survival Skills -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3.2s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-orange">🧭</div>
+                <h5>Survival Skills</h5>
+                <p>Build shelters, start fires, and navigation basics.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Mushroom Hunting -->
+          <div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3.4s;">
+            <div class="card activity-card">
+              <div class="card-body text-center">
+                <div class="activity-icon icon-blue">🍄</div>
+                <h5>Mushroom Hunting</h5>
+                <p>Guided forage for edible fungi and nature ID tips.</p>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Additional Activities -->
-<!-- Swimming -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.4s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-blue">
-        🏊‍♂️
       </div>
-      <h5>Swimming</h5>
-      <p>Pool fun, water games, and basic swim lessons.</p>
-    </div>
-  </div>
-</div>
 
-<!-- Horseback Riding -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.6s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-purple">
-        🏇
+      <!-- WAVE DIVIDER BOTTOM -->
+      <div class="wave-divider-bottom">
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1200 120">
+          <path d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z" class="shape-fill"></path>
+        </svg>
       </div>
-      <h5>Horseback Riding</h5>
-      <p>Guided trail rides and basic horsemanship skills.</p>
     </div>
-  </div>
-</div>
 
-<!-- Petting Zoo -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:1.8s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-green">
-        🐐
-      </div>
-      <h5>Petting Zoo</h5>
-      <p>Meet and feed friendly farm animals.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Farming -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-orange">
-        🌾
-      </div>
-      <h5>Farming</h5>
-      <p>Learn planting, harvesting, and sustainable farm chores.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Tractor Rides -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.2s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-red">
-        🚜
-      </div>
-      <h5>Tractor Rides</h5>
-      <p>Fun tractor tours around the campgrounds.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Wagon Rides -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.4s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-blue">
-        🛺
-      </div>
-      <h5>Wagon Rides</h5>
-      <p>Horse-drawn wagon tours through the woods.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Fishing -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.6s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-green">
-        🎣
-      </div>
-      <h5>Fishing</h5>
-      <p>Catch & release fishing at our stocked pond.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Archery & Shooting -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:2.8s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-purple">
-        🏹
-      </div>
-      <h5>Bow & Arrow</h5>
-      <p>Intro to archery safety and target practice.</p>
-    </div>
-  </div>
-</div>
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-red">
-        🎯
-      </div>
-      <h5>Target Shooting</h5>
-      <p>Safe pellet-gun shooting at stationary targets.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Survival Courses -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3.2s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-orange">
-        🧭
-      </div>
-      <h5>Survival Skills</h5>
-      <p>Build shelters, start fires, and navigation basics.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Mushroom Hunting -->
-<div class="col-sm-6 col-lg-4 fade-in" style="transition-delay:3.4s;">
-  <div class="card activity-card">
-    <div class="card-body text-center">
-      <div class="activity-icon icon-blue">
-        🍄
-      </div>
-      <h5>Mushroom Hunting</h5>
-      <p>Guided forage for edible fungi and nature ID tips.</p>
-    </div>
-  </div>
-</div>
-
-      </div>
-      
-    </div>
-  </section>
-
-  <!-- WAVE DIVIDER BOTTOM -->
-  <div class="wave-divider-bottom">
-    <svg
-      data-name="Layer 1"
-      xmlns="https://www.w3.org/2000/svg"
-      viewBox="0 0 1200 120"
-    >
-      <path
-        d="M0,0V46.29c47.64,22,101.13,27.35,154.18,15.18C252,45.21,315.44,7.12,380,2.19c66.95-5.2,127.94,22.92,192,47.78,60.54,23.42,121.16,43.78,183,31,62.76-12.92,123.19-51.48,185-68.19,62.47-16.81,125.53-10.45,185,9.64,46.22,15.87,89.57,40.6,133,65.32,55.46,33.19,114.45,58.65,174,47.65V0Z"
-        class="shape-fill"
-      ></path>
-    </svg>
-  </div>
-
-  <!-- TESTIMONIALS SECTION -->
-  <section id="testimonials">
-    <div class="container">
-      <h2 class="fade-in">Testimonials</h2>
-      <div
-        id="testimonialCarousel"
-        class="carousel slide fade-in"
-        data-bs-ride="carousel"
-        style="transition-delay: 0.2s;"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="testimonial-card mx-auto">
-              <p class="testimonial-text">
-                “AKCYC changed my child’s life! The counselors were amazing, and
-                the variety of activities kept her engaged and excited every
-                single day. Highly recommend!”
-              </p>
-              <p class="testimonial-author">— Sarah M., Parent</p>
+    <!-- TESTIMONIALS -->
+    <div id="testimonials" class="tab-pane fade">
+      <div class="container">
+        <h2 class="fade-in">Testimonials</h2>
+        <div id="testimonialCarousel" class="carousel slide fade-in" data-bs-ride="carousel" style="transition-delay: 0.2s;">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-card mx-auto">
+                <p class="testimonial-text">
+                  “AKCYC changed my child’s life! The counselors were amazing, and the variety of activities kept her engaged
+                  and excited every single day. Highly recommend!”
+                </p>
+                <p class="testimonial-author">— Sarah M., Parent</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card mx-auto">
+                <p class="testimonial-text">
+                  “From kayaking at dawn to stargazing at night, every moment was unforgettable. My son returned more confident
+                  and eager to help protect the environment.”
+                </p>
+                <p class="testimonial-author">— Jason L., Camper</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card mx-auto">
+                <p class="testimonial-text">
+                  “The focus on nature education and team-building is top-notch. We love AKCYC’s mission and can’t wait to come
+                  back next summer!”
+                </p>
+                <p class="testimonial-author">— Emily K., Parent</p>
+              </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="testimonial-card mx-auto">
-              <p class="testimonial-text">
-                “From kayaking at dawn to stargazing at night, every moment was
-                unforgettable. My son returned more confident and eager to help
-                protect the environment.”
-              </p>
-              <p class="testimonial-author">— Jason L., Camper</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="testimonial-card mx-auto">
-              <p class="testimonial-text">
-                “The focus on nature education and team-building is top-notch.
-                We love AKCYC’s mission and can’t wait to come back next summer!”
-              </p>
-              <p class="testimonial-author">— Emily K., Parent</p>
-            </div>
+          <div class="carousel-indicators mt-3">
+            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
+            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
+            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
           </div>
         </div>
-        <div class="carousel-indicators mt-3">
-          <button
-            type="button"
-            data-bs-target="#testimonialCarousel"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Testimonial 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#testimonialCarousel"
-            data-bs-slide-to="1"
-            aria-label="Testimonial 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#testimonialCarousel"
-            data-bs-slide-to="2"
-            aria-label="Testimonial 3"
-          ></button>
-        </div>
       </div>
     </div>
-  </section>
 
-  <!-- REGISTRATION SECTION -->
-  <section id="register">
-    <div class="container">
-      <h2 class="fade-in">Camp Registration</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-7 fade-in" style="transition-delay: 0.2s;">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title text-center mb-3">Register for AKCYC 20XX</h5>
-              <p class="text-center text-muted mb-4">
-                Fill out the form below to secure your spot. Fields marked with
-                <span class="text-danger">*</span> are required.
-              </p>
-              <form>
-                <!-- Session -->
-                <div class="mb-4">
-                  <label for="campSession" class="form-label">
-                    <span class="text-danger">*</span> Select Session
-                  </label>
-                  <select class="form-select" id="campSession" required>
-                    <option value="" selected disabled>Choose a session…</option>
-                    <option>Session 1: June 10 – June 17</option>
-                    <option>Session 2: July 1 – July 8</option>
-                    <option>Session 3: August 5 – August 12</option>
-                  </select>
-                </div>
-
-                <!-- Name & Contact -->
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="firstName" class="form-label">
-                      <span class="text-danger">*</span> First Name
+    <!-- REGISTER -->
+    <div id="register" class="tab-pane fade">
+      <div class="container">
+        <h2 class="fade-in">Camp Registration</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-7 fade-in" style="transition-delay: 0.2s;">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center mb-3">Register for AKCYC 20XX</h5>
+                <p class="text-center text-muted mb-4">
+                  Fill out the form below to secure your spot. Fields marked with
+                  <span class="text-danger">*</span> are required.
+                </p>
+                <form>
+                  <!-- Session -->
+                  <div class="mb-4">
+                    <label for="campSession" class="form-label">
+                      <span class="text-danger">*</span> Select Session
                     </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="firstName"
-                      placeholder="Alex"
-                      required
-                    />
+                    <select class="form-select" id="campSession" required>
+                      <option value="" selected disabled>Choose a session…</option>
+                      <option>Session 1: June 10 – June 17</option>
+                      <option>Session 2: July 1 – July 8</option>
+                      <option>Session 3: August 5 – August 12</option>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <label for="lastName" class="form-label">
-                      <span class="text-danger">*</span> Last Name
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastName"
-                      placeholder="Johnson"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="row g-3 mt-3">
-                  <div class="col-md-6">
-                    <label for="email" class="form-label">
-                      <span class="text-danger">*</span> Email
-                    </label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="you@example.com"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="phone" class="form-label">
-                      <span class="text-danger">*</span> Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      id="phone"
-                      placeholder="(555) 123-4567"
-                      required
-                    />
-                  </div>
-                </div>
 
-                <!-- Address (optional) -->
-                <div class="mb-4 mt-4">
-                  <label for="address" class="form-label">Address (Optional)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="address"
-                    placeholder="Street, City, State, ZIP"
-                  />
-                </div>
-
-                <!-- Medical / Dietary Notes -->
-                <div class="mb-4">
-                  <label for="medicalInfo" class="form-label">
-                    Medical / Dietary Notes (Optional)
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="medicalInfo"
-                    rows="3"
-                    placeholder="Allergies, dietary restrictions, etc."
-                  ></textarea>
-                </div>
-
-                <!-- Emergency Contact -->
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="emergencyName" class="form-label">
-                      Emergency Contact Name
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="emergencyName"
-                      placeholder="Parent / Guardian Name"
-                    />
+                  <!-- Name & Contact -->
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="firstName" class="form-label">
+                        <span class="text-danger">*</span> First Name
+                      </label>
+                      <input type="text" class="form-control" id="firstName" placeholder="Alex" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="lastName" class="form-label">
+                        <span class="text-danger">*</span> Last Name
+                      </label>
+                      <input type="text" class="form-control" id="lastName" placeholder="Johnson" required />
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="emergencyPhone" class="form-label">
-                      Emergency Contact Phone
-                    </label>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      id="emergencyPhone"
-                      placeholder="(555) 987-6543"
-                    />
-                  </div>
-                </div>
 
-                <!-- Submit Button -->
-                <div class="text-center mt-4">
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-rounded"
-                  >
-                    Submit Registration
-                  </button>
-                </div>
-              </form>
+                  <div class="row g-3 mt-3">
+                    <div class="col-md-6">
+                      <label for="email" class="form-label">
+                        <span class="text-danger">*</span> Email
+                      </label>
+                      <input type="email" class="form-control" id="email" placeholder="you@example.com" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">
+                        <span class="text-danger">*</span> Phone Number
+                      </label>
+                      <input type="tel" class="form-control" id="phone" placeholder="(555) 123-4567" required />
+                    </div>
+                  </div>
+
+                  <!-- Address (optional) -->
+                  <div class="mb-4 mt-4">
+                    <label for="address" class="form-label">Address (Optional)</label>
+                    <input type="text" class="form-control" id="address" placeholder="Street, City, State, ZIP" />
+                  </div>
+
+                  <!-- Medical / Dietary Notes -->
+                  <div class="mb-4">
+                    <label for="medicalInfo" class="form-label">Medical / Dietary Notes (Optional)</label>
+                    <textarea class="form-control" id="medicalInfo" rows="3" placeholder="Allergies, dietary restrictions, etc."></textarea>
+                  </div>
+
+                  <!-- Emergency Contact -->
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="emergencyName" class="form-label">Emergency Contact Name</label>
+                      <input type="text" class="form-control" id="emergencyName" placeholder="Parent / Guardian Name" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="emergencyPhone" class="form-label">Emergency Contact Phone</label>
+                      <input type="tel" class="form-control" id="emergencyPhone" placeholder="(555) 987-6543" />
+                    </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-rounded">Submit Registration</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="fade-in">Contact Us</h2>
-      <div class="row g-4">
-        <!-- Contact Info -->
-        <div class="col-lg-5 contact-info fade-in" style="transition-delay:0.2s;">
-          <h5>Camp Office</h5>
-          <p class="mb-1">
-            <i class="bi bi-geo-alt-fill me-2"></i>
-            123 Forest Way, Somewhere, Country 12345
-          </p>
-          <p class="mb-1">
-            <i class="bi bi-envelope-fill me-2"></i>
-            <a href="mailto:info@akc yc.org">info@akc yc.org</a>
-          </p>
-          <p>
-            <i class="bi bi-telephone-fill me-2"></i>
-            (555) 987-6543
-          </p>
-          <div class="mt-3">
-            <h6>Follow Us</h6>
-            <a
-              href="https://www.facebook.com/YourAKCYCFacebook"
-              target="_blank"
-              class="me-3"
-            >
-              <i class="bi bi-facebook fs-4"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/YourAKCYCInstagram"
-              target="_blank"
-            >
-              <i class="bi bi-instagram fs-4"></i>
-            </a>
+    <!-- CONTACT -->
+    <div id="contact" class="tab-pane fade">
+      <div class="container">
+        <h2 class="fade-in">Contact Us</h2>
+        <div class="row g-4">
+          <!-- Contact Info -->
+          <div class="col-lg-5 contact-info fade-in" style="transition-delay:0.2s;">
+            <h5>Camp Office</h5>
+            <p class="mb-1">
+              <i class="bi bi-geo-alt-fill me-2"></i>
+              123 Forest Way, Somewhere, Country 12345
+            </p>
+            <p class="mb-1">
+              <i class="bi bi-envelope-fill me-2"></i>
+              <a href="mailto:info@akc yc.org">info@akc yc.org</a>
+            </p>
+            <p>
+              <i class="bi bi-telephone-fill me-2"></i>
+              (555) 987-6543
+            </p>
+            <div class="mt-3">
+              <h6>Follow Us</h6>
+              <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" class="me-3">
+                <i class="bi bi-facebook fs-4"></i>
+              </a>
+              <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank">
+                <i class="bi bi-instagram fs-4"></i>
+              </a>
+            </div>
           </div>
-        </div>
-        <!-- Contact Form -->
-        <div class="col-lg-7 fade-in" style="transition-delay:0.4s;">
-          <form>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="contactName" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="contactName"
-                  placeholder="Your name"
-                  required
-                />
+          <!-- Contact Form -->
+          <div class="col-lg-7 fade-in" style="transition-delay:0.4s;">
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="contactName" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="contactName" placeholder="Your name" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="contactEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="contactEmail" placeholder="you@example.com" required />
+                </div>
               </div>
-              <div class="col-md-6">
-                <label for="contactEmail" class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="contactEmail"
-                  placeholder="you@example.com"
-                  required
-                />
+              <div class="mb-3 mt-3">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="contactMessage" rows="4" placeholder="Your message…" required></textarea>
               </div>
-            </div>
-            <div class="mb-3 mt-3">
-              <label for="contactMessage" class="form-label">Message</label>
-              <textarea
-                class="form-control"
-                id="contactMessage"
-                rows="4"
-                placeholder="Your message…"
-                required
-              ></textarea>
-            </div>
-            <div class="text-end">
-              <button type="submit" class="btn btn‐submit btn-rounded">
-                Send Message
-              </button>
-            </div>
-          </form>
+              <div class="text-end">
+                <button type="submit" class="btn btn‐submit btn-rounded">Send Message</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="container">
+    <div class="container text-center">
       <p>&copy; 2025 All Kids Count Youth Camp</p>
       <p>“AKCYC: Inspiring kids to explore, learn, and protect our world.”</p>
       <div class="social-icons mt-3">
-        <a
-          href="https://www.facebook.com/YourAKCYCFacebook"
-          target="_blank"
-          aria-label="Facebook"
-        >
+        <a href="https://www.facebook.com/YourAKCYCFacebook" target="_blank" aria-label="Facebook">
           <i class="bi bi-facebook"></i>
         </a>
-        <a
-          href="https://www.instagram.com/YourAKCYCInstagram"
-          target="_blank"
-          aria-label="Instagram"
-        >
+        <a href="https://www.instagram.com/YourAKCYCInstagram" target="_blank" aria-label="Instagram">
           <i class="bi bi-instagram"></i>
         </a>
       </div>
@@ -723,51 +513,34 @@
   </footer>
 
   <!-- BACK TO TOP BUTTON -->
-  <button id="backToTop" aria-label="Back to top">
-    <i class="bi bi-chevron-up"></i>
-  </button>
+  <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
 
   <!-- Bootstrap 5 JS Bundle -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // NAVBAR: toggle .scrolled once user scrolls past 80px
+    // NAVBAR: toggle .scrolled
     const navbar = document.querySelector(".navbar");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 80) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
+      navbar.classList.toggle("scrolled", window.scrollY > 80);
     });
 
     // FADE-IN ON SCROLL
     const faders = document.querySelectorAll(".fade-in");
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          observer.unobserve(e.target);
+        }
       });
-    }, appearOptions);
-    faders.forEach((fader) => {
-      appearOnScroll.observe(fader);
-    });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    faders.forEach(el => observer.observe(el));
 
-    // BACK TO TOP BUTTON
+    // BACK TO TOP
     const backToTopBtn = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.add("show");
-      } else {
-        backToTopBtn.classList.remove("show");
-      }
+      backToTopBtn.classList.toggle("show", window.scrollY > 400);
     });
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });

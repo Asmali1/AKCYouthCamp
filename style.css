@@ -91,6 +91,7 @@ p {
   z-index: 1000;
 }
 
+/* scrolled state handled by JS adding .scrolled */
 .navbar.scrolled {
   background-color: var(--color-black);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -104,19 +105,6 @@ p {
 }
 .navbar.scrolled .navbar-brand {
   color: var(--color-yellow);
-}
-
-.navbar .nav-link {
-  font-weight: 500;
-  color: var(--color-gray-dark);
-  margin: 0 0.7rem;
-  transition: color var(--transition-speed);
-}
-.navbar.scrolled .nav-link {
-  color: var(--color-gray-light);
-}
-.navbar .nav-link:hover {
-  color: var(--color-yellow) !important;
 }
 
 .navbar .navbar-toggler {
@@ -595,8 +583,7 @@ footer a:hover {
   color: var(--color-white);
   margin: 0 0.5rem;
   font-size: 1.4rem;
-  transition: color var(--transition-speed),
-              transform var(--transition-speed);
+  transition: color var(--transition-speed), transform var(--transition-speed);
 }
 .social-icons a:hover {
   color: var(--color-yellow);
@@ -628,8 +615,7 @@ footer a:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease,
-              visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 999;
 }
 #backToTop.show {
@@ -646,10 +632,29 @@ footer a:hover {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.7s ease-out,
-              transform 0.7s ease-out;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/*------------------------------------------------------------
+  NAV-TABS OVERRIDES FOR TABBED NAVIGATION
+------------------------------------------------------------*/
+.nav-tabs {
+  border-bottom: none;
+}
+.nav-tabs .nav-link {
+  border: none;
+  color: var(--color-gray-dark);
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+.nav-tabs .nav-link:hover {
+  color: var(--color-yellow);
+}
+.nav-tabs .nav-link.active {
+  color: var(--color-blue);
+  border-bottom: 3px solid var(--color-blue);
 }
