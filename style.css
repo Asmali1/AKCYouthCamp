@@ -1,0 +1,655 @@
+/*------------------------------------------------------------
+  STEP 1: COPY EXACT HUES FROM THE LOGO INTO CSS VARIABLES
+------------------------------------------------------------*/
+:root {
+  --color-orange: #FF6A00;
+  --color-green:  #28A745;
+  --color-purple: #8E44AD;
+  --color-red:    #E74C3C;
+  --color-blue:   #3498DB;
+  --color-yellow: #F1C40F;
+
+  --color-black:  #000000;
+  --color-white:  #FFFFFF;
+
+  /* Neutrals: */
+  --color-gray-light: #F7F9FA;
+  --color-gray-mid:   #E1E8ED;
+  --color-gray-dark:  #333333;
+
+  /* Typography: */
+  --font-heading: "Poppins", sans-serif;
+  --font-body:    "Source Sans Pro", sans-serif;
+
+  /* Global transition timing: */
+  --transition-speed: 0.3s;
+}
+
+/*------------------------------------------------------------
+  STEP 2: GLOBAL RESET + BASE STYLES
+------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background-color: var(--color-gray-light);
+  color: var(--color-gray-dark);
+  padding-top: 56px; /* leave space for a fixed navbar */
+}
+
+a {
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  color: var(--color-gray-dark);
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-gray-dark);
+}
+
+.btn-rounded {
+  border-radius: 50px;
+  transition: transform var(--transition-speed),
+              box-shadow var(--transition-speed);
+}
+
+.btn-rounded:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------------------------------------
+  STEP 3: NAVBAR STYLING
+------------------------------------------------------------*/
+.navbar {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(200%) blur(20px);
+  transition: background-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: var(--color-black);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  transition: color var(--transition-speed);
+}
+.navbar.scrolled .navbar-brand {
+  color: var(--color-yellow);
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  margin: 0 0.7rem;
+  transition: color var(--transition-speed);
+}
+.navbar.scrolled .nav-link {
+  color: var(--color-gray-light);
+}
+.navbar .nav-link:hover {
+  color: var(--color-yellow) !important;
+}
+
+.navbar .navbar-toggler {
+  border: none;
+}
+.navbar .navbar-toggler-icon {
+  font-size: 1.2rem;
+  color: var(--color-gray-dark);
+  transition: color var(--transition-speed);
+}
+.navbar.scrolled .navbar-toggler-icon {
+  color: var(--color-gray-light);
+}
+
+/*------------------------------------------------------------
+  STEP 4: HERO SECTION
+------------------------------------------------------------*/
+.hero {
+  position: relative;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://via.placeholder.com/1920x900?text=Forest+Camp+Background")
+      no-repeat center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.hero .hero‐content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 1rem;
+  animation: fadeInDown 1s ease‐out both;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 .word‐orange { color: var(--color-orange); }
+.hero h1 .word‐green  { color: var(--color-green);  }
+.hero h1 .word‐purple { color: var(--color-purple); }
+.hero h1 .word‐red    { color: var(--color-red);    }
+.hero h1 .word‐blue   { color: var(--color-blue);   }
+
+.hero p.lead {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero .btn‐join {
+  background: var(--color-yellow);
+  color: var(--color-black);
+  border: none;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: background var(--transition-speed),
+              transform var(--transition-speed);
+}
+.hero .btn‐join:hover {
+  background: #E0B40A;
+  transform: translateY(-3px);
+}
+
+.hero .shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+  z-index: 1;
+}
+.hero .shape.small {
+  width: 120px;
+  height: 120px;
+  background: var(--color-green);
+  top: 10%;
+  left: 5%;
+}
+.hero .shape.medium {
+  width: 180px;
+  height: 180px;
+  background: var(--color-orange);
+  bottom: 15%;
+  right: 10%;
+  animation-duration: 10s;
+}
+.hero .shape.large {
+  width: 200px;
+  height: 200px;
+  background: var(--color-purple);
+  top: 30%;
+  right: 20%;
+  animation-duration: 12s;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) translateX(0);   }
+  50%  { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0);   }
+}
+
+/*------------------------------------------------------------
+  STEP 5: WAVE DIVIDER
+------------------------------------------------------------*/
+.wave-divider-top {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  margin-bottom: -1px;
+}
+.wave-divider-top svg {
+  position: relative;
+  display: block;
+  width: calc(150% + 1.3px);
+  height: 100px;
+}
+.wave-divider-top .shape-fill {
+  fill: var(--color-yellow);
+}
+
+/*------------------------------------------------------------
+  STEP 6: ABOUT SECTION
+------------------------------------------------------------*/
+#about {
+  background-color: var(--color-yellow);
+  padding: 6rem 1rem;
+}
+#about h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: 1rem;
+  position: relative;
+}
+#about h2::after {
+  content: "";
+  width: 80px;
+  height: 5px;
+  background-color: var(--color-red);
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+#about p {
+  font-size: 1.1rem;
+  color: var(--color-gray-dark);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/*------------------------------------------------------------
+  STEP 7: FEATURES SECTION
+------------------------------------------------------------*/
+#features {
+  position: relative;
+  background:
+    url("https://via.placeholder.com/1920x700?text=Kids+by+the+Lake")
+      no-repeat center/cover;
+  background-size: cover;
+  padding: 6rem 1rem;
+  text-align: center;
+  color: var(--color-white);
+}
+#features::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#features .features-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+#features h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-yellow);
+}
+#features p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--color-gray-light);
+}
+#features .btn-light {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: background-color var(--transition-speed),
+              transform var(--transition-speed);
+}
+#features .btn-light:hover {
+  background-color: #2B7EC0;
+  transform: translateY(-2px);
+}
+
+/*------------------------------------------------------------
+  STEP 8: ACTIVITIES SECTION
+------------------------------------------------------------*/
+#activities {
+  background-color: var(--color-white);
+  padding: 6rem 1rem;
+}
+#activities h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-gray-dark);
+}
+.activity-card {
+  border: none;
+  background-color: var(--color-gray-light);
+  border-radius: 15px;
+  transition: transform var(--transition-speed),
+              box-shadow var(--transition-speed);
+  overflow: hidden;
+}
+.activity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.activity-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  width: 80px; height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.icon-orange  { background: var(--color-orange);  color: var(--color-white); }
+.icon-green   { background: var(--color-green);   color: var(--color-white); }
+.icon-purple  { background: var(--color-purple);  color: var(--color-white); }
+.icon-red     { background: var(--color-red);     color: var(--color-white); }
+.icon-blue    { background: var(--color-blue);    color: var(--color-white); }
+
+.activity-card .card-body {
+  padding: 2.5rem;
+  text-align: center;
+}
+.activity-card h5 {
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: var(--color-gray-dark);
+}
+.activity-card p {
+  color: var(--color-gray-dark);
+  font-size: 0.975rem;
+}
+
+/*------------------------------------------------------------
+  STEP 9: WAVE DIVIDER (BOTTOM)
+------------------------------------------------------------*/
+.wave-divider-bottom {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+.wave-divider-bottom svg {
+  display: block;
+  width: calc(150% + 1.3px);
+  height: 100px;
+}
+.wave-divider-bottom .shape-fill {
+  fill: var(--color-white);
+}
+
+/*------------------------------------------------------------
+  STEP 10: TESTIMONIALS SECTION
+------------------------------------------------------------*/
+#testimonials {
+  background-color: var(--color-gray-light);
+  padding: 6rem 1rem;
+  position: relative;
+}
+#testimonials h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-yellow);
+}
+.testimonial-card {
+  background-color: var(--color-white);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed),
+              box-shadow var(--transition-speed);
+  max-width: 700px;
+  margin: 0 auto;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.testimonial-text {
+  font-style: italic;
+  color: var(--color-gray-dark);
+  margin-bottom: 1.2rem;
+}
+.testimonial-author {
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  text-align: right;
+}
+.carousel-indicators button {
+  background-color: var(--color-yellow);
+  border: none;
+}
+.carousel-indicators .active {
+  background-color: var(--color-yellow);
+  opacity: 1;
+}
+
+/*------------------------------------------------------------
+  STEP 11: REGISTRATION SECTION
+------------------------------------------------------------*/
+#register {
+  background-color: var(--color-white);
+  padding: 6rem 1rem;
+}
+#register h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-gray-dark);
+}
+#register .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+#register .card-body {
+  padding: 3rem 2rem;
+}
+#register label {
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+#register .form-control,
+#register .form-select,
+#register textarea {
+  border-radius: 8px;
+  transition: border-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+  border: 1px solid var(--color-gray-mid);
+}
+#register .form-control:focus,
+#register .form-select:focus,
+#register textarea:focus {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+#register .btn-primary {
+  background-color: var(--color-blue);
+  border: none;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.05rem;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-speed),
+              transform var(--transition-speed);
+}
+#register .btn-primary:hover {
+  background-color: #2B7EC0;
+  transform: translateY(-3px);
+}
+
+/*------------------------------------------------------------
+  STEP 12: CONTACT SECTION
+------------------------------------------------------------*/
+#contact {
+  background-color: var(--color-gray-light);
+  padding: 6rem 1rem;
+}
+#contact h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-gray-dark);
+}
+#contact .contact-info h5 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-gray-dark);
+}
+#contact .contact-info p,
+#contact .contact-info a {
+  color: var(--color-gray-dark);
+  margin-bottom: 0.5rem;
+}
+#contact .contact-info i {
+  color: var(--color-blue);
+  margin-right: 0.5rem;
+}
+#contact .contact-info a:hover {
+  color: var(--color-blue);
+  text-decoration: underline;
+}
+#contact .form-control:focus {
+  border-color: var(--color-purple);
+  box-shadow: 0 0 8px rgba(142, 68, 173, 0.3);
+}
+#contact .btn‐submit {
+  background-color: var(--color-green);
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 50px;
+  color: var(--color-white);
+  transition: background-color var(--transition-speed),
+              transform var(--transition-speed);
+}
+#contact .btn‐submit:hover {
+  background-color: #238C3F;
+  transform: translateY(-2px);
+}
+
+/*------------------------------------------------------------
+  STEP 13: FOOTER
+------------------------------------------------------------*/
+footer {
+  background-color: var(--color-black);
+  color: var(--color-gray-light);
+  padding: 3rem 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+footer p {
+  margin-bottom: 0.5rem;
+}
+footer a {
+  color: var(--color-yellow);
+  margin: 0 0.5rem;
+  transition: transform var(--transition-speed);
+}
+footer a:hover {
+  transform: scale(1.1);
+  color: var(--color-green);
+}
+.social-icons a {
+  color: var(--color-white);
+  margin: 0 0.5rem;
+  font-size: 1.4rem;
+  transition: color var(--transition-speed),
+              transform var(--transition-speed);
+}
+.social-icons a:hover {
+  color: var(--color-yellow);
+  transform: scale(1.2);
+}
+.footer‐note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-gray-mid);
+}
+
+/*------------------------------------------------------------
+  STEP 14: BACK TO TOP BUTTON
+------------------------------------------------------------*/
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease,
+              visibility 0.3s ease;
+  z-index: 999;
+}
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+#backToTop:hover {
+  background-color: #C0392B;
+}
+
+/*------------------------------------------------------------
+  STEP 15: FADE-IN ON SCROLL
+------------------------------------------------------------*/
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out,
+              transform 0.7s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
