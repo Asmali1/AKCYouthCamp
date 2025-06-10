@@ -632,7 +632,9 @@ footer a:hover {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  /* transition: opacity 0.7s ease-out, transform 0.7s ease-out; */
+    transition-delay: 0s !important;
+
 }
 .fade-in.visible {
   opacity: 1;
